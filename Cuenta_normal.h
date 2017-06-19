@@ -3,11 +3,11 @@
 
 using namespace std;
 
-#ifndef ARTISTA_H
-#define ARTISTA_H
-class Artista{
+#ifndef CUENTA_NORMAL_H
+#define CUENTA_NORMAL_H
+class Cuenta_normal{
     protected:
     public:
-        Artista();
+        Cuenta_normal();
 };
 #endif

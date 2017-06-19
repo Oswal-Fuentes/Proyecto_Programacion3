@@ -2,8 +2,3 @@
 
 Artista::Artista(){
 }
-/*
-Artista::Artista(){
-
-}
-*/

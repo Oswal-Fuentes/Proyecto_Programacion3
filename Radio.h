@@ -3,11 +3,12 @@
 
 using namespace std;
 
-#ifndef ARTISTA_H
-#define ARTISTA_H
-class Artista{
+#ifndef RADIO_H
+#define RADIO_H
+
+class Radio{
     protected:
     public:
-        Artista();
+        Radio();
 };
 #endif

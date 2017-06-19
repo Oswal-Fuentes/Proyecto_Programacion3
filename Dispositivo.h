@@ -11,6 +11,7 @@ class Dispositivo{
     public:
         Dispositivo(string);
         Dispositivo();
+        
         string getIp();
         void setIp(string);
 

@@ -3,11 +3,12 @@
 
 using namespace std;
 
-#ifndef ARTISTA_H
-#define ARTISTA_H
-class Artista{
+#ifndef EN_VIVO_H
+#define EN_VIVO_H
+
+class En_vivo{
     protected:
     public:
-        Artista();
+        En_vivo();
 };
 #endif

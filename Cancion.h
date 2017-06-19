@@ -5,6 +5,7 @@ using namespace std;
 
 #ifndef CANCION_H
 #define CANCION_H
+
 class Cancion{
     protected:
         string nombre;
@@ -14,6 +15,7 @@ class Cancion{
     public:
         Cancion(string,int,int,int);
         Cancion();
+
         string getNombre();
         void setNombre(string);
 

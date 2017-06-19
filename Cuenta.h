@@ -13,6 +13,7 @@ class Cuenta{
     public:
         Cuenta(string,string,string);
         Cuenta();
+        
         string getNombre();
         void setNombre(string);
 

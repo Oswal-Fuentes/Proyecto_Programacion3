@@ -3,11 +3,12 @@
 
 using namespace std;
 
-#ifndef ARTISTA_H
-#define ARTISTA_H
-class Artista{
+#ifndef RECOPILATORIO_H
+#define RECOPILATORIO_H
+
+class Recopilatorio{
     protected:
     public:
-        Artista();
+        Recopilatorio();
 };
 #endif
