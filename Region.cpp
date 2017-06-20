@@ -12,3 +12,13 @@ void Region::setNombre(string nombre){
 string Region::getNombre(){
 	return nombre;
 }
+void Region::descuento(){
+
+}
+
+void Region::bloquearCancion(){
+
+}
+void Region::mostrarTop(){
+	
+}

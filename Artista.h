@@ -16,5 +16,8 @@ public:
 
 	vector<Cancion*> getCanciones();
 	void setCanciones(vector<Cancion*>);
+
+	virtual void Pagar();
+	
 };
 #endif

@@ -10,3 +10,11 @@ Radio::Radio(string nombre,int duracion,int reproducciones,int favorito){
 Radio::Radio(){
 	
 }
+
+void Radio::Reproducir(){
+	
+}
+
+void Radio::Favorited(){
+	
+}

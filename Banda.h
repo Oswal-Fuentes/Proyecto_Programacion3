@@ -11,5 +11,7 @@ class Banda:public Artista{
 protected:
 public:
 	Banda();
+
+	void Pagar();
 };
 #endif

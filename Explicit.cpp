@@ -11,3 +11,12 @@ Explicit::Explicit(){
 
 }
 
+void Explicit::Reproducir(){
+	
+}
+
+void Explicit::Favorited(){
+	
+}
+
+

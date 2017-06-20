@@ -11,5 +11,7 @@ class Solista:public Artista{
 protected:
 public:
 	Solista();
+
+	void pagar();
 };
 #endif

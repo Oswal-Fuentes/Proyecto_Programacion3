@@ -12,5 +12,8 @@ protected:
 public:
 	Single(string);
 	Single();
+	
+	void dibujarPortada();
+
 };
 #endif

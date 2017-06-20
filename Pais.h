@@ -12,5 +12,9 @@ protected:
 public:
 	Pais(string);
 	Pais();
+
+	void descuento();
+	void bloquearCancion();
+	void mostrarTop();
 };
 #endif

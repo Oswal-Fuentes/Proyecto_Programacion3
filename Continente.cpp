@@ -6,3 +6,14 @@ Continente::Continente(string nombre){
 Continente::Continente(){
 
 }
+void Continente::descuento(){
+
+}
+
+void Continente::bloquearCancion(){
+
+}
+
+void Continente::mostrarTop(){
+	
+}

@@ -6,4 +6,6 @@ Album_completo::Album_completo(string nombre){
 Album_completo::Album_completo(){
 	
 }
-
+void Album_completo::dibujarPortada(){
+	
+}

@@ -11,5 +11,9 @@ protected:
 public:
 	Continente(string);
 	Continente();
+
+	void descuento();
+	void bloquearCancion();
+	void mostrarTop();
 };
 #endif

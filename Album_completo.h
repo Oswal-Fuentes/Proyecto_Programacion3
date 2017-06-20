@@ -12,5 +12,7 @@ protected:
 public:
 	Album_completo(string);
 	Album_completo();
+	
+	void dibujarPortada();
 };
 #endif

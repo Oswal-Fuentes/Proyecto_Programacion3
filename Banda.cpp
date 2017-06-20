@@ -2,3 +2,7 @@
 
 Banda::Banda(){
 }
+
+void Banda::Pagar(){
+	
+}

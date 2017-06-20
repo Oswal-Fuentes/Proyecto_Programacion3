@@ -6,4 +6,13 @@ Pais::Pais(string nombre){
 Pais::Pais(){
 
 }
+void Pais::descuento(){
 
+}
+void Pais::bloquearCancion(){
+
+}
+
+void Pais::mostrarTop(){
+	
+}

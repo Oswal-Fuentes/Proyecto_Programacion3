@@ -10,3 +10,7 @@ vector<Cancion*> Artista::getCanciones() {
 void Artista::setCanciones(vector<Cancion*>canciones) {
 	this->canciones = canciones;
 }
+
+void Artista::Pagar(){
+	
+}

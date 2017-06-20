@@ -11,6 +11,9 @@ class Radio:public Cancion{
 protected:
 public:
 	Radio(string,int,int,int);
-	Radio();		
+	Radio();
+
+	void Reproducir();
+	void Favorited();
 };
 #endif

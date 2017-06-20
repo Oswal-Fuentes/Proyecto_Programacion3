@@ -11,3 +11,12 @@ En_vivo::En_vivo(){
 
 }
 
+void En_vivo::Reproducir(){
+	
+}
+
+void En_vivo::Favorited(){
+	
+}
+
+

@@ -28,5 +28,8 @@ public:
     int getFavorito();
     void setFavorito(int);
 
+    virtual void Reproducir();
+    virtual void Favorited();
+
 };
 #endif

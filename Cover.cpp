@@ -9,3 +9,10 @@ Cover::Cover(string nombre,int duracion,int reproducciones,int favorito){
 Cover::Cover(){
 
 }
+
+void Cover::Reproducir(){
+	
+}
+void Cover::Favorited(){
+	
+}

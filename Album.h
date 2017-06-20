@@ -26,5 +26,7 @@ public:
 
 	Artista getArtista();
 	void setArtista(Artista);
+
+	virtual void dibujarPortada();
 };
 #endif
