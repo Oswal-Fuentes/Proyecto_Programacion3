@@ -1,4 +1,9 @@
 #include "PC.h"
 
-PC::PC(){
+PC::PC(string ip){
+	this->ip=ip;
 }
+PC::PC(){
+	
+}
+

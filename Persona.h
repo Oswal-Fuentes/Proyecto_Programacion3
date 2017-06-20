@@ -7,14 +7,14 @@ using namespace std;
 #define PERSONA_H
 
 class Persona{
-    protected:
-        int dinero;
-    public:
-        Persona(int);
-        Persona();
+protected:
+	int dinero;
+public:
+	Persona(int);
+	Persona();
 
-        int getDinero();
-        void setDinero(int);
+	int getDinero();
+	void setDinero(int);
 
 };
 #endif

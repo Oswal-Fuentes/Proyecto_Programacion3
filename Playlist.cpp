@@ -1,13 +1,22 @@
 #include "Playlist.h"
 
 Playlist::Playlist(string nombre){
-    this->nombre=nombre;
+	this->nombre=nombre;
 }
 Playlist::Playlist(){
 
-}void Playlist::setNombre(string nombre){
-   this-> nombre=nombre;
+}
+void Playlist::setNombre(string nombre){
+	this-> nombre=nombre;
 }
 string Playlist::getNombre(){
-   return nombre;
+	return nombre;
+}
+
+vector<Cancion*> Playlist::getCanciones() {
+	return canciones;
+}
+
+void Playlist::setCanciones(vector<Cancion*> canciones) {
+	this->canciones = canciones;
 }

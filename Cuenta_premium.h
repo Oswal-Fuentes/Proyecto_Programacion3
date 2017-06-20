@@ -1,14 +1,16 @@
 #include <iostream>
 #include <string>
+#include "Cuenta.h"
 
 using namespace std;
 
 #ifndef CUENTA_PREMIUM_H
 #define CUENTA_PREMIUM_H
 
-class Cuenta_premium{
-    protected:
-    public:
-        Cuenta_premium();
+class Cuenta_premium:public Cuenta{
+protected:
+public:
+	Cuenta_premium(string,string,string);
+	Cuenta_premium();
 };
 #endif

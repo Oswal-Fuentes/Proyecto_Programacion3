@@ -1,13 +1,15 @@
 #include <iostream>
 #include <string>
+#include "Artista.h"
 
 using namespace std;
 
 #ifndef BANDA_H
 #define BANDA_H
-class Banda{
-    protected:
-    public:
-        Banda();
+
+class Banda:public Artista{
+protected:
+public:
+	Banda();
 };
 #endif

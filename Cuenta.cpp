@@ -1,27 +1,51 @@
 #include "Cuenta.h"
 
 Cuenta::Cuenta(string nombre,string username,string password){
-    this->nombre=nombre;
-    this->username=username;
-    this->password=password;
+	this->nombre=nombre;
+	this->username=username;
+	this->password=password;
 }
 Cuenta::Cuenta(){
 
-}void Cuenta::setNombre(string nombre){
-   this-> nombre=nombre;
+}
+void Cuenta::setNombre(string nombre){
+	this-> nombre=nombre;
 }
 string Cuenta::getNombre(){
-   return nombre;
+	return nombre;
 }
 void Cuenta::setUsername(string username){
-   this-> username=username;
+	this-> username=username;
 }
 string Cuenta::getUsername(){
-   return username;
+	return username;
 }
 void Cuenta::setPassword(string password){
-   this-> password=password;
+	this-> password=password;
 }
 string Cuenta::getPassword(){
-   return password;
+	return password;
+}
+
+vector<Favoritos*> Cuenta::getFavoritos() {
+	return favoritos;
+}
+
+void Cuenta::setFavoritos(vector<Favoritos*>favoritos) {
+	this->favoritos = favoritos;
+}	
+vector<Cancion*> Cuenta::getHistorial() {
+	return historial;
+}
+
+void Cuenta::setHistorial(vector<Cancion*>historial) {
+	this->historial = historial;
+}
+
+vector<Playlist*> Cuenta::getPlaylists() {
+	return playlists;
+}
+
+void Cuenta::setPlaylists(vector<Playlist*>playlists) {
+	this->playlists = playlists;
 }

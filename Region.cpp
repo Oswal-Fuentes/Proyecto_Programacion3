@@ -1,13 +1,14 @@
 #include "Region.h"
 
 Region::Region(string nombre){
-    this->nombre=nombre;
+	this->nombre=nombre;
 }
 Region::Region(){
 
-}void Region::setNombre(string nombre){
-   this-> nombre=nombre;
+}
+void Region::setNombre(string nombre){
+	this-> nombre=nombre;
 }
 string Region::getNombre(){
-   return nombre;
+	return nombre;
 }

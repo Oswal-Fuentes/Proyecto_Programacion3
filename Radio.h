@@ -1,14 +1,16 @@
 #include <iostream>
 #include <string>
+#include "Cancion.h"
 
 using namespace std;
 
 #ifndef RADIO_H
 #define RADIO_H
 
-class Radio{
-    protected:
-    public:
-        Radio();
+class Radio:public Cancion{
+protected:
+public:
+	Radio(string,int,int,int);
+	Radio();		
 };
 #endif

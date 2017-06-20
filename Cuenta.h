@@ -1,27 +1,43 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Favoritos.h"
+#include "Playlist.h"
+#include "Cancion.h"
 
 using namespace std;
 
 #ifndef CUENTA_H
 #define CUENTA_H
+
 class Cuenta{
-    protected:
-        string nombre;
-        string username;
-        string password;
-    public:
-        Cuenta(string,string,string);
-        Cuenta();
-        
-        string getNombre();
-        void setNombre(string);
+protected:
+    string nombre;
+    string username;
+    string password;
+    vector<Favoritos*>favoritos;
+    vector<Cancion*>historial;
+    vector<Playlist*>playlists;
+public:
+    Cuenta(string,string,string);
+    Cuenta();
 
-        string getUsername();
-        void setUsername(string);
+    string getNombre();
+    void setNombre(string);
 
-        string getPassword();
-        void setPassword(string);
+    string getUsername();
+    void setUsername(string);
 
+    string getPassword();
+    void setPassword(string);
+
+    vector<Favoritos*> getFavoritos();
+    void setFavoritos(vector<Favoritos*>);
+
+    vector<Cancion*> getHistorial();
+    void setHistorial(vector<Cancion*>);
+
+    vector<Playlist*> getPlaylists();
+    void setPlaylists(vector<Playlist*>);
 };
 #endif

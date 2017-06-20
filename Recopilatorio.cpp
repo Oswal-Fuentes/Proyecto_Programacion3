@@ -1,4 +1,9 @@
 #include "Recopilatorio.h"
 
-Recopilatorio::Recopilatorio(){
+Recopilatorio::Recopilatorio(string nombre){
+	this->nombre=nombre;
 }
+Recopilatorio::Recopilatorio(){
+
+}
+

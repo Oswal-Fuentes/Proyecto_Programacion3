@@ -7,14 +7,14 @@ using namespace std;
 #define REGION_H
 
 class Region{
-    protected:
-        string nombre;
-    public:
-        Region(string);
-        Region();
+protected:
+	string nombre;
+public:
+	Region(string);
+	Region();
 
-        string getNombre();
-        void setNombre(string);
+	string getNombre();
+	void setNombre(string);
 
 };
 #endif

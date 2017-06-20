@@ -1,4 +1,9 @@
 #include "Pais.h"
 
-Pais::Pais(){
+Pais::Pais(string nombre){
+	this->nombre=nombre;
 }
+Pais::Pais(){
+
+}
+

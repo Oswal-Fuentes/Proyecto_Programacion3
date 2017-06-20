@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Cancion.h"
 
 using namespace std;
 
@@ -7,14 +9,17 @@ using namespace std;
 #define PLAYLIST_H
 
 class Playlist{
-    protected:
-        string nombre;
-    public:
-        Playlist(string);
-        Playlist();
+protected:
+	string nombre;
+	vector<Cancion*>canciones;
+public:
+	Playlist(string);
+	Playlist();
 
-        string getNombre();
-        void setNombre(string);
+	string getNombre();
+	void setNombre(string);
 
+	vector<Cancion*> getCanciones();
+	void setCanciones(vector<Cancion*>);
 };
 #endif

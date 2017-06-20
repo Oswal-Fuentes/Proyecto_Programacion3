@@ -1,13 +1,16 @@
 #include <iostream>
 #include <string>
+#include "Album.h"
 
 using namespace std;
 
-#ifndef COMPLETO_H
-#define COMPLETO_H
-class Completo{
-    protected:
-    public:
-        Completo();
+#ifndef ALBUM_COMPLETO_H
+#define ALBUM_COMPLETO_H
+
+class Album_completo:public Album{
+protected:
+public:
+	Album_completo(string);
+	Album_completo();
 };
 #endif

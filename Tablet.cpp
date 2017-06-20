@@ -1,4 +1,9 @@
 #include "Tablet.h"
 
-Tablet::Tablet(){
+Tablet::Tablet(string ip){
+	this->ip=ip;
 }
+Tablet::Tablet(){
+
+}
+
