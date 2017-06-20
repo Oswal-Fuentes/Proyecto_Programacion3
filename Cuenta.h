@@ -39,5 +39,12 @@ public:
 
     vector<Playlist*> getPlaylists();
     void setPlaylists(vector<Playlist*>);
+
+    virtual void agregar_a_Favoritos()=0;
+    virtual void agregar_a_Historial()=0;
+    virtual void agregar_a_Playlist()=0;
+    virtual void comprarPremium()=0;
+    virtual void cancelarSuscripcion()=0;
+    virtual void borrarCuenta()=0;  
 };
 #endif

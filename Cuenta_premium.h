@@ -12,5 +12,12 @@ protected:
 public:
 	Cuenta_premium(string,string,string);
 	Cuenta_premium();
+
+	void agregar_a_Favoritos();
+	void agregar_a_Historial();
+	void agregar_a_Playlist();
+	void comprarPremium();
+	void cancelarSuscripcion();
+	void borrarCuenta();
 };
 #endif
