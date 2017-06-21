@@ -1,9 +1,10 @@
 #include "Cuenta.h"
 
-Cuenta::Cuenta(string nombre,string username,string password){
+Cuenta::Cuenta(string nombre,string username,string password,vector<Cuenta*>* perteneceA){
 	this->nombre=nombre;
 	this->username=username;
 	this->password=password;
+	this->perteneceA=perteneceA;
 }
 Cuenta::Cuenta(){
 
@@ -26,26 +27,21 @@ void Cuenta::setPassword(string password){
 string Cuenta::getPassword(){
 	return password;
 }
-
-vector<Favoritos*> Cuenta::getFavoritos() {
+vector<Cancion*> Cuenta::getFavoritos() {
 	return favoritos;
 }
-
-void Cuenta::setFavoritos(vector<Favoritos*>favoritos) {
+void Cuenta::setFavoritos(vector<Cancion*>favoritos) {
 	this->favoritos = favoritos;
-}	
+}
 vector<Cancion*> Cuenta::getHistorial() {
 	return historial;
 }
-
 void Cuenta::setHistorial(vector<Cancion*>historial) {
 	this->historial = historial;
 }
-
 vector<Playlist*> Cuenta::getPlaylists() {
 	return playlists;
 }
-
 void Cuenta::setPlaylists(vector<Playlist*>playlists) {
 	this->playlists = playlists;
 }

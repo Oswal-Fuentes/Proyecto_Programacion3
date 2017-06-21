@@ -8,7 +8,6 @@ using namespace std;
 #define NORMAL_H
 
 class Normal:public Playlist{
-
 protected:
 	
 public:

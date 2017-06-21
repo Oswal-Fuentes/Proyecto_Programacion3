@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ncurses.h>
 #include "Favoritos.h"
 #include "Playlist.h"
 #include "Cancion.h"
@@ -15,11 +16,12 @@ protected:
     string nombre;
     string username;
     string password;
-    vector<Favoritos*>favoritos;
-    vector<Cancion*>historial;
-    vector<Playlist*>playlists;
+    vector<Cuenta*>* perteneceA;
+    vector<Cancion*> favoritos;
+    vector<Cancion*> historial;
+    vector<Playlist*> playlists;
 public:
-    Cuenta(string,string,string);
+    Cuenta(string,string,string,vector<Cuenta*>*);
     Cuenta();
 
     string getNombre();
@@ -31,8 +33,8 @@ public:
     string getPassword();
     void setPassword(string);
 
-    vector<Favoritos*> getFavoritos();
-    void setFavoritos(vector<Favoritos*>);
+    vector<Cancion*> getFavoritos();
+    void setFavoritos(vector<Cancion*>);
 
     vector<Cancion*> getHistorial();
     void setHistorial(vector<Cancion*>);
@@ -40,11 +42,12 @@ public:
     vector<Playlist*> getPlaylists();
     void setPlaylists(vector<Playlist*>);
 
-    virtual void agregar_a_Favoritos()=0;
-    virtual void agregar_a_Historial()=0;
-    virtual void agregar_a_Playlist()=0;
-    virtual void comprarPremium()=0;
+    virtual void agregar_a_Favoritos(Cancion*)=0;
+    virtual void verHistorial()=0;
+    virtual void agregar_a_Playlist(Cancion*)=0;
+    virtual void cambiarTipo()=0;
     virtual void cancelarSuscripcion()=0;
-    virtual void borrarCuenta()=0;  
+    virtual void borrarCuenta()=0;
+    virtual void reproducir(vector<Cancion*>)=0;
 };
 #endif

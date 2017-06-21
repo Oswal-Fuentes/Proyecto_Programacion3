@@ -10,7 +10,7 @@ class Cancion{
 protected:
     string nombre;
     int duracion;
-    int reproducciones;
+    int reproducciones=0;
     int favorito;
 public:
     Cancion(string,int,int,int);
