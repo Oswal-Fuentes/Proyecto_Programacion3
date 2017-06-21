@@ -54,11 +54,6 @@ void Spotify::run(){
 			mvprintw(9,5,"5. Opciones");
 			mvprintw(10,5,"Ingrese la opción que desea: ");
 			
-			switch(){
-				case 1:{
-					break;
-				}
-			}
 		}else{//Si la cuenta no existe
 			mvprintw(7,5,"Error en usuario o contraseña");
 		}
