@@ -10,7 +10,7 @@ using namespace std;
 class Cuenta_normal:public Cuenta{
 protected:
 public:
-	Cuenta_normal(string,string,string);
+	Cuenta_normal(string,string,string,vector<Cuenta*>*);
 	Cuenta_normal();	
 
 	void agregar_a_Favoritos(Cancion*);

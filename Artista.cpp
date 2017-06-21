@@ -3,6 +3,10 @@
 Artista::Artista(){
 }
 
+Artista::Artista(string Nombre){
+	this->Nombre=Nombre;
+}
+
 vector<Album*> Artista::getAlbumes() {
 	return Albumes;
 }

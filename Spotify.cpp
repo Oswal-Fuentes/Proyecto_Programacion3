@@ -9,10 +9,11 @@ Spotify::Spotify(){
 void Spotify::run(){
 	vector<Cuenta*> cuentas;
 	Cuenta* usuarioActual;
-	cuentas.push_back(new Cuenta_normal("Oswal","osw","123"));
-	cuentas.push_back(new Cuenta_premium("Jorge","jor","123"));
-	cuentas.push_back(new Cuenta_premium("Alessandro","ale","123"));
+	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",&cuentas));
+	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",&cuentas));
+	cuentas.push_back(new Cuenta_premium("Alessandro","ale","123",&cuentas));
 	vector<Artista*> artistas;
+	artistas.push_back(new Artista("Oasis"))
 	int opc=0;
 	do{
 		/* code */
