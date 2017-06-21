@@ -12,11 +12,11 @@ Explicit::Explicit(){
 }
 
 void Explicit::Reproducir(){
-	reproducciones++;
+	reproducciones+=3;
 }
 
 void Explicit::Favorited(){
-	favorito++;
+	favorito+=3;
 }
 
 

@@ -12,11 +12,11 @@ En_vivo::En_vivo(){
 }
 
 void En_vivo::Reproducir(){
-	reproducciones++;
+	reproducciones+=4;
 }
 
 void En_vivo::Favorited(){
-	favorito++;
+	favorito+=4;
 }
 
 

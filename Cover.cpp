@@ -11,8 +11,8 @@ Cover::Cover(){
 }
 
 void Cover::Reproducir(){
-	reproducciones++;
+	reproducciones+=5;
 }
 void Cover::Favorited(){
-	favorito++;
+	favorito+=5;
 }

@@ -12,9 +12,9 @@ Radio::Radio(){
 }
 
 void Radio::Reproducir(){
-	reproducciones++;
+	reproducciones+=2;
 }
 
 void Radio::Favorited(){
-	favorito++;
+	favorito+=2;
 }
