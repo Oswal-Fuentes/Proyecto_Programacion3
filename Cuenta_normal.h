@@ -13,12 +13,12 @@ public:
 	Cuenta_normal(string,string,string);
 	Cuenta_normal();	
 
-	void agregar_a_Favoritos();
-	void agregar_a_Historial();
-	void agregar_a_Playlist();
-	void comprarPremium();
-	void cancelarSuscripcion();
-	void borrarCuenta();  
-
+	void agregar_a_Favoritos(Cancion*);
+    void verHistorial();
+    void agregar_a_Playlist(Cancion*);
+    void cambiarTipo();
+    void cancelarSuscripcion();
+    void borrarCuenta();
+    void reproducir(vector<Cancion*>);
 };
 #endif

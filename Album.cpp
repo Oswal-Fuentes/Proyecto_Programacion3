@@ -21,13 +21,6 @@ void Album::setCanciones(vector<Cancion*> canciones) {
 	this->canciones = canciones;
 }
 
-void Album::setArtista(Artista artista){
-	this-> artista=artista;
-}
-Artista Album::getArtista(){
-	return artista;
-}
-
 void Album::dibujarPortada(){
 
 }

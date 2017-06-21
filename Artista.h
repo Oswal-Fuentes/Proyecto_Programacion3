@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Cancion.h"
+#include "Album.h"
 #include "Persona.h"
 
 using namespace std;
@@ -11,12 +11,15 @@ using namespace std;
 
 class Artista{
 protected:
-	vector<Cancion*>canciones;
+	string Nombre;
+	vector<Album*>Albumes;
 public:
 	Artista();
 
-	vector<Cancion*> getCanciones();
-	void setCanciones(vector<Cancion*>);
+	vector<Album*> getAlbumes();
+	void setAlbumes(vector<Album*>);
+	void setNombre(string);
+	string getNombre();
 
 	virtual void Pagar(vector<Persona*>);
 

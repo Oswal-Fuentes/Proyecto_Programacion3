@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include "Cancion.h"
-#include "Artista.h"
 
 using namespace std;
 
@@ -13,7 +12,6 @@ class Album{
 protected:
 	string nombre;
 	vector<Cancion*>canciones;
-	Artista artista;
 public:
 	Album(string);
 	Album();
@@ -23,9 +21,6 @@ public:
 
 	vector<Cancion*> getCanciones();
 	void setCanciones(vector<Cancion*>);
-
-	Artista getArtista();
-	void setArtista(Artista);
 
 	virtual void dibujarPortada();
 };
