@@ -78,6 +78,7 @@ void Spotify::run(){
 					mvprintw(5+artistas.size()+1,5,"Escoja el artista que desea: ");
 					getstr(respuesta);
 					Artista* artistaActual=artistas[atoi(respuesta)];
+					artistaActual->pagar();
 						//Albumes
 					clear();
 					vector<Album*> albumesActuales;
@@ -92,6 +93,18 @@ void Spotify::run(){
 						//Canciones
 					clear();
 					vector<Cancion*> cancionesActuales;
+				}
+				if (respuestaGlobal.compare("2")){
+					usuarioActual->agregar_a_Playlist();
+				}
+				if (respuestaGlobal.compare("3")){
+					usuarioActual->agregar_a_Favoritos();
+				}
+				if (respuestaGlobal.compare("4")){
+					usuarioActual->verHistorial();
+				}
+				if (respuestaGlobal.compare("5")){
+					usuarioActual->verHistorial();
 				}
 		}else{//Si la cuenta no existe
 			mvprintw(10,5,"Error en usuario o contraseña");

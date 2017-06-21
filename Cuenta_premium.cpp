@@ -49,9 +49,14 @@ void Cuenta_premium::agregar_a_Playlist(Cancion* cancion){
 		playlists[posPlaylist]->addCancion(cancion);
 	}
 }
+
 void Cuenta_premium::cambiarTipo(){
-	
+	clear();
+	mvprintw(5,5,"Ud es un cliente especial, le regalamos más meses hasta y dinero!!");
+	this->Persona->addDinero(15);
+	clear();
 }
+
 void Cuenta_premium::cancelarSuscripcion(){
 	clear();
 	for (int i = 0; i < 10; ++i){
@@ -61,11 +66,12 @@ void Cuenta_premium::cancelarSuscripcion(){
 	getstr(respuesta);
 	string resp(respuesta);
 	if (resp.compare("s")!=0){
-		
-		mvprintw(5+i,5,"Gracias!!!!!!")
+		clear()	;
+		mvprintw(5,5,"Gracias!!!!!!")
 		this->Persona->addDinero(15);
 	}else{
-		mvprintw(5+i,5,"No tiene escapatoria muajajaja!!")
+		clear();
+		mvprintw(5,5,"No tiene escapatoria muajajaja!!")
 	}
 	getch();
 	clear();

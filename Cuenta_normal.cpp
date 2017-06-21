@@ -37,7 +37,9 @@ void Cuenta_normal::agregar_a_Playlist(Cancion* cancion){
 	clear();
 }
 void Cuenta_normal::cambiarTipo(){
-
+	clear();
+	mvprintw(5+i,5,"Está bloqueado en su region");
+	clear();
 }
 void Cuenta_normal::cancelarSuscripcion(){
 	clear();
