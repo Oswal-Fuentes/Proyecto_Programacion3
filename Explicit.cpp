@@ -12,11 +12,11 @@ Explicit::Explicit(){
 }
 
 void Explicit::Reproducir(){
-	//this->reproducciones.setReproducciones(this->reproducciones.getReproducciones()+1);
+	reproducciones++;
 }
 
 void Explicit::Favorited(){
-	//this->favorito.setFavorito(this->favorito.getFavorito()+1);
+	favorito++;
 }
 
 

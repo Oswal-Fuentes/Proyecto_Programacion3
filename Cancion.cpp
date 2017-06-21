@@ -34,10 +34,10 @@ int Cancion::getFavorito(){
 	return favorito;
 }
 void Cancion::Reproducir(){
-	this->reproducciones.setReproducciones(this->reproducciones.getReproducciones()+1);
+	reproducciones++;
 }
 
 void Cancion::Favorited(){
-	this->favorito.setFavorito(this->favorito.getFavorito()+1);
+	favorito++;
 }
 

@@ -6,7 +6,7 @@ using namespace std;
 #ifndef CANCION_H
 #define CANCION_H
 
-class Cancion{
+class Cancion{ 
 protected:
     string nombre;
     int duracion;
@@ -30,6 +30,6 @@ public:
 
     virtual void Reproducir();
     virtual void Favorited();
-    
+
 };
 #endif
