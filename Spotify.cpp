@@ -39,24 +39,27 @@ void Spotify::run(){
 				usuarioActual=i;
 			}	
 		}
-		if (existeUsuario==true&&existeCuenta==true){
+		
+		if (existeUsuario==true&&existeCuenta==true){//Si existe la cuenta
 			clear();
 			string bienvenida;
 			bienvenida="Le damos la bienvenida ";
 			bienvenida+=cuentas[usuarioActual]->getNombre();
+			//Menú principal
 			mvprintw(2,5,bienvenida.c_str());
-			mvprintw(5,5,"Artista");
-			mvprintw(6,5,"Playlists");
-			mvprintw(7,5,"Favoritos");
-			mvprintw(8,5,"Historial");
-			mvprintw(9,5,"Opciones");
-			move(10,5);
-			char a=getch();
-			string tmp="";
-			tmp+=a;
-			mvprintw(11,5,tmp.c_str());
+			mvprintw(5,5,"1. Artista");
+			mvprintw(6,5,"2. Playlists");
+			mvprintw(7,5,"3. Favoritos");
+			mvprintw(8,5,"4. Historial");
+			mvprintw(9,5,"5. Opciones");
+			mvprintw(10,5,"Ingrese la opción que desea: ");
 			
-		}else{
+			switch(){
+				case 1:{
+					break;
+				}
+			}
+		}else{//Si la cuenta no existe
 			mvprintw(7,5,"Error en usuario o contraseña");
 		}
 		
