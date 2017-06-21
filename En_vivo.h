@@ -12,5 +12,9 @@ protected:
 public:
 	En_vivo(string,int,int,int);
 	En_vivo();
+
+	void Reproducir();
+	void Favorited();
+	
 };
 #endif

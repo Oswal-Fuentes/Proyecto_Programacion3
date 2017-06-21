@@ -27,3 +27,7 @@ void Album::setArtista(Artista artista){
 Artista Album::getArtista(){
 	return artista;
 }
+
+void Album::dibujarPortada(){
+
+}

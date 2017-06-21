@@ -6,4 +6,8 @@ Recopilatorio::Recopilatorio(string nombre){
 Recopilatorio::Recopilatorio(){
 
 }
+void Recopilatorio::dibujarPortada(){
+	
+}
+
 

@@ -12,5 +12,9 @@ protected:
 public:
 	Explicit(string,int,int,int);
 	Explicit();
+
+	void Reproducir();
+	void Favorited();
+
 };
 #endif

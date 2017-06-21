@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Cancion.h"
+#include "Persona.h"
 
 using namespace std;
 
@@ -16,5 +17,8 @@ public:
 
 	vector<Cancion*> getCanciones();
 	void setCanciones(vector<Cancion*>);
+
+	virtual void Pagar(vector<Persona*>);
+
 };
 #endif

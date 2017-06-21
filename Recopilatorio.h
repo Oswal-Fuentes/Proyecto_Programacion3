@@ -12,5 +12,7 @@ protected:
 public:
 	Recopilatorio(string);
 	Recopilatorio();
+	
+	void dibujarPortada();
 };
 #endif

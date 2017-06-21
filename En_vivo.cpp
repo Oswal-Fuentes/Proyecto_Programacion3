@@ -11,3 +11,12 @@ En_vivo::En_vivo(){
 
 }
 
+void En_vivo::Reproducir(){
+	//this->reproducciones.setReproducciones(this->reproducciones.getReproducciones()+1);
+}
+
+void En_vivo::Favorited(){
+	//this->favorito.setFavorito(this->favorito.getFavorito()+1);
+}
+
+

@@ -6,4 +6,6 @@ Single::Single(string nombre){
 Single::Single(){
 
 }
-
+void Single::dibujarPortada(){
+	
+}

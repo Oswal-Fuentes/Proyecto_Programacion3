@@ -16,5 +16,8 @@ public:
 	string getNombre();
 	void setNombre(string);
 
+	virtual void descuento();
+	virtual void bloquearCancion();
+	virtual void mostrarTop();
 };
 #endif

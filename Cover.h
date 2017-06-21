@@ -12,5 +12,9 @@ protected:
 public:
 	Cover(string,int,int,int);
 	Cover();
+
+	void Reproducir();
+	void Favorited();
+
 };
 #endif
