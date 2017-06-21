@@ -10,7 +10,7 @@ using namespace std;
 class Explicit:public Cancion{
 protected:
 public:
-	Explicit(string,int,int,int);
+	Explicit(string,int,int,int,Region,string);
 	Explicit();
 
 	void Reproducir();

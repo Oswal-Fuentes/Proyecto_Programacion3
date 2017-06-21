@@ -15,14 +15,22 @@ void Artista::setAlbumes(vector<Album*>Albumes) {
 	this->Albumes = Albumes;
 }
 
-void Artista::Pagar(vector<Persona*>personas){
-	
-}
-
 void Artista::setNombre(string Nombre){
 	this->Nombre=Nombre;
 }
 
 string Artista::getNombre(){
 	return Nombre;
+}
+
+void setPersona(Persona persona){
+	this->persona=persona;
+}
+
+Persona getPersona(){
+	return persona;
+}
+
+void Artista::Pagar(){
+	
 }

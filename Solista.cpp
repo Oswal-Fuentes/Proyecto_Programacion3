@@ -7,7 +7,7 @@ Solista::Solista(){
 
 }
 
-void Solista::pagar(){
+void Solista::Pagar(){
 	this->persona.setDinero(this->persona.getDinero()+1);
 }
 

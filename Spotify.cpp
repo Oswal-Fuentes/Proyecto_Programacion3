@@ -7,8 +7,14 @@ Spotify::Spotify(){
 }
 
 void Spotify::run(){
+	vector<Cancion*>canciones;
 	vector<Cuenta*> cuentas;
 	Cuenta* usuarioActual;
+	for (int i = 0; i < count; ++i)
+	{
+		Region region = new Socialista("Honduras",12);
+		canciones.push_back(new Radio("Wicked Game",4,0,0,region,"Juan"));
+	}
 	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Alessandro","ale","123",&cuentas));

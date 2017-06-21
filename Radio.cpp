@@ -5,6 +5,8 @@ Radio::Radio(string nombre,int duracion,int reproducciones,int favorito){
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
+	this->region=region;
+	this->artista=artista;
 }
 
 Radio::Radio(){
