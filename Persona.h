@@ -9,8 +9,9 @@ using namespace std;
 class Persona{
 protected:
 	int dinero;
+	string id;
 public:
-	Persona(int);
+	Persona(int,string);
 	Persona();
 
 	int getDinero();

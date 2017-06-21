@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Artista.h"
+#include "Persona.h"
 
 using namespace std;
 
@@ -9,7 +10,9 @@ using namespace std;
 
 class Solista:public Artista{
 protected:
+	Persona persona;
 public:
+	Solista(Persona);
 	Solista();
 
 	void pagar();

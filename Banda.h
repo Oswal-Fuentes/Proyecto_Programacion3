@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Artista.h"
+#include "Persona.h"
 
 using namespace std;
 
@@ -9,8 +11,12 @@ using namespace std;
 
 class Banda:public Artista{
 protected:
+	vector<Persona*>integrantes;
 public:
 	Banda();
+
+	vector<Persona*> getIntegrantes();
+	void setIntegrantes(vector<Persona*>);
 
 	void Pagar();
 };

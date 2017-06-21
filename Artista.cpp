@@ -11,6 +11,6 @@ void Artista::setCanciones(vector<Cancion*>canciones) {
 	this->canciones = canciones;
 }
 
-void Artista::Pagar(){
+void Artista::Pagar(vector<Persona*>personas){
 	
 }

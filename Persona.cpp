@@ -1,7 +1,8 @@
 #include "Persona.h"
 
-Persona::Persona(int dinero){
+Persona::Persona(int dinero,string id){
 	this->dinero=dinero;
+	this->id=id;	
 }
 Persona::Persona(){
 
