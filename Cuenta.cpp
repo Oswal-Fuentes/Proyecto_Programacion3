@@ -1,10 +1,12 @@
 #include "Cuenta.h"
 
-Cuenta::Cuenta(string nombre,string username,string password,vector<Cuenta*>* perteneceA){
+Cuenta::Cuenta(string nombre,string username,string password,vector<Cuenta*>* perteneceA,int dinero,string id){
 	this->nombre=nombre;
 	this->username=username;
 	this->password=password;
 	this->perteneceA=perteneceA;
+	this->dinero=dinero;
+	this->id=id;
 }
 Cuenta::Cuenta(){
 

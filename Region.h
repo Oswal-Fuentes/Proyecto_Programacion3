@@ -9,15 +9,18 @@ using namespace std;
 class Region{
 protected:
 	string nombre;
+	float impuesto;
 public:
-	Region(string);
+	Region(string,float);
 	Region();
 
 	string getNombre();
 	void setNombre(string);
 
-	virtual void descuento();
-	virtual void bloquearCancion();
-	virtual void mostrarTop();
+	float getImpuesto();
+	void setImpuesto(float);
+
+	virtual double descuento(double);
+	virtual bool bloquearCancion(int);
 };
 #endif

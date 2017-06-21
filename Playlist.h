@@ -21,5 +21,9 @@ public:
 
 	vector<Cancion*> getCanciones();
 	void setCanciones(vector<Cancion*>);
+
+	void addCancion(Cancion*);
+
+	
 };
 #endif

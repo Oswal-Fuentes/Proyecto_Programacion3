@@ -5,13 +5,14 @@
 #include "Favoritos.h"
 #include "Playlist.h"
 #include "Cancion.h"
+#include "Persona.h"
 
 using namespace std;
 
 #ifndef CUENTA_H
 #define CUENTA_H
 
-class Cuenta{
+class Cuenta:public Persona{
 protected:
     string nombre;
     string username;
@@ -21,7 +22,7 @@ protected:
     vector<Cancion*> historial;
     vector<Playlist*> playlists;
 public:
-    Cuenta(string,string,string,vector<Cuenta*>*);
+    Cuenta(string,string,string,vector<Cuenta*>*,int,string);
     Cuenta();
 
     string getNombre();

@@ -13,3 +13,13 @@ void Persona::setDinero(int dinero){
 int Persona::getDinero(){
 	return dinero;
 }
+
+string Persona::getid(){
+	return id;
+}
+void Persona::setid(string id){
+	this->id=id;
+}
+void Persona::agregarDinero(int dinero){
+	this->dinero+=dinero;
+}

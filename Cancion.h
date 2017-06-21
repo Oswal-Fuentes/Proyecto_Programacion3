@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "Artista.h"
+#include "Region.h"
 
 using namespace std;
 
@@ -12,8 +14,10 @@ protected:
     int duracion;
     int reproducciones=0;
     int favorito;
+    Artista artista;
+    Region region; 
 public:
-    Cancion(string,int,int,int);
+    Cancion(string,int,int,int,Artista,Region);
     Cancion();
 
     string getNombre();
@@ -27,6 +31,9 @@ public:
 
     int getFavorito();
     void setFavorito(int);
+
+    Artista getArtista();
+    void setArtista(Artista);
 
     virtual void Reproducir();
     virtual void Favorited();

@@ -1,7 +1,8 @@
 #include "Region.h"
 
-Region::Region(string nombre){
+Region::Region(string nombre,float impuesto){
 	this->nombre=nombre;
+	this->impuesto=impuesto;
 }
 Region::Region(){
 
@@ -12,13 +13,18 @@ void Region::setNombre(string nombre){
 string Region::getNombre(){
 	return nombre;
 }
-void Region::descuento(){
 
+float Region::getImpuesto(){
+	return impuesto;
 }
 
-void Region::bloquearCancion(){
+void Region::setImpuesto(float impuesto){
+	this->impuesto=impuesto;
+}
+
+double Region::descuento(double cant){
 
 }
-void Region::mostrarTop(){
-	
+bool Region::bloquearCancion(int duracion){
+
 }

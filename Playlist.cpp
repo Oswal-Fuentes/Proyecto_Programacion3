@@ -20,3 +20,7 @@ vector<Cancion*> Playlist::getCanciones() {
 void Playlist::setCanciones(vector<Cancion*> canciones) {
 	this->canciones = canciones;
 }
+
+void Playlist::addCancion(Cancion* cancion){
+	canciones.push_back(cancion);
+}
