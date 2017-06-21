@@ -1,12 +1,12 @@
 #include "Cancion.h"
 
-Cancion::Cancion(string nombre,int duracion,int reproducciones,int favorito,Artista artista,Region region){
+Cancion::Cancion(string nombre,int duracion,int reproducciones,int favorito,Region region,string artista){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->artista=artistas;
 	this->region=region;
+	this->artista=artista;
 }
 Cancion::Cancion(){
 
@@ -36,11 +36,11 @@ int Cancion::getFavorito(){
 	return favorito;
 }
 
-Artista Cancion::getArtista(){
+string Cancion::getArtista(){
 	return artista;
 }
 
-void Cancion::setArtista(Artista artista){
+void Cancion::setArtista(string artista){
 	this->artista=artistas;
 }
 

@@ -15,6 +15,6 @@ public:
 	Solista(Persona);
 	Solista();
 
-	void pagar();
+	void Pagar();
 };
 #endif

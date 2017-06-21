@@ -9,20 +9,24 @@ using namespace std;
 #ifndef ARTISTA_H
 #define ARTISTA_H
 
-class Artista:public Persona{
+class Artista{
 protected:
 	string Nombre;
+	Persona persona;
 	vector<Album*>Albumes;
 public:
-	Artista();
 	Artista(string);
+	Artista();
 
 	vector<Album*> getAlbumes();
 	void setAlbumes(vector<Album*>);
+
 	void setNombre(string);
 	string getNombre();
 
-	virtual void Pagar(vector<Persona*>);
+	void setPersona(Persona);
+	Persona getPersona();
 
+	virtual void Pagar();
 };
 #endif
