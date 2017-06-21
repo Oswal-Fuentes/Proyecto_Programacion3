@@ -1,3 +1,5 @@
+#pragma once
+
 #include <ncurses.h>
 #include <string>
 #include <string.h>
@@ -34,12 +36,14 @@
 #include "Tablet.h"
 #include "PC.h"
 #include "Movil.h"
-#include "Spotify.h"
 
 using namespace std;
 
-int main(){
-	Spotify spotify;
-	spotify.run();
-	return 0;
-}
+class Spotify{
+private:
+	//punteros y destructores
+public:
+	Spotify();
+	void run();
+	string toString();
+};

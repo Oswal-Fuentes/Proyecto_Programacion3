@@ -10,6 +10,7 @@ using namespace std;
 class Normal:public Playlist{
 
 protected:
+	
 public:
 	Normal(string);
 	Normal();
