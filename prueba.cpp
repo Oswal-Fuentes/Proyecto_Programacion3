@@ -145,6 +145,7 @@ int main(int argc, char const *argv[]){
 	for (int i = 0; i < playlists.size(); ++i){
 		archivo<<*playlists[i];
 	}
+	//archivo<<"endOfFile";
 	archivo.flush();
 	archivo.close();
 	playlists.clear();
@@ -154,7 +155,10 @@ int main(int argc, char const *argv[]){
 	for (int i = 0; i < playlists.size(); ++i){
 		cout<<*playlists[i];
 	}
-
+	cout<<"Canciones de playlists[0]"<<endl;
+	for (int i = 0; i < playlists[0]->getCanciones().size(); ++i){
+		cout<<*(playlists[0]->getCanciones()[i]);
+	}
 	return 0;
 }
 
@@ -221,9 +225,8 @@ void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	bool final=false;
-	do{
+	while (!entrada.eof()){
 		//Se leen los atributos
-		cout<<"gatitos"<<endl;
 		string id;
 		getline(entrada,id);
 		string nombre;
@@ -235,11 +238,21 @@ void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion
 		string cancion;
 		getline(entrada,cancion);
 		while(cancion.compare("end")!=0){
-			/*cout<<"Cancion: "<<cancion<<endl;
-			cin>>id;*/
-			ptrPlaylist->addCancion(canciones[atoi(cancion.c_str())]);
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(cancion)==0){
+					ptrPlaylist->addCancion(canciones[i]);
+				}
+			}
 			getline(entrada,cancion);
+			if(cancion.compare("")==0){
+				final=true;
+				break;
+			}
 		}
-	} while (!entrada.eof());
+		if (final==true){
+			break;
+		}
+	}
+	playlists.pop_back();
 	entrada.close();
 }
