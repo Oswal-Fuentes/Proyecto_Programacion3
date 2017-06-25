@@ -23,7 +23,6 @@
 #include "Single.h"
 #include "Album_completo.h"
 #include "Recopilatorio.h"
-#include "Favoritos.h"
 #include "Normal.h"
 #include "Cuenta_normal.h"
 #include "Cuenta_premium.h"

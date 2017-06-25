@@ -13,11 +13,11 @@ protected:
     int duracion;
     int reproducciones=0;
     int favorito;
-    Region* region; 
+    int regionInt;//Este indica la region que puede ser 1=Democrática 2=Socialista
     string artista;
 public:
 
-    Cancion(string,int,int,int,Region*,string);
+    Cancion(string,int,int,int,int,string);
     Cancion();
 
     string getNombre();
@@ -37,6 +37,16 @@ public:
 
     virtual void Reproducir();
     virtual void Favorited();
+
+    friend ostream& operator<<(ostream& salida,Cancion& cancion){
+        return salida<<
+                cancion.nombre<<endl<<
+                cancion.duracion<<endl<<
+                cancion.reproducciones<<endl<<
+                cancion.favorito<<endl<<
+                cancion.regionInt<<endl<<
+                cancion.artista<<endl;
+    }
 
 };
 #endif

@@ -28,7 +28,6 @@ void Spotify::run(){
 
 	int opc=0;
 	do{
-
 		char respuesta[1000];
 		/*Esta variable se usa para leer las respuestas de usuario con getstr() que sólo puede
 		guardar las respuestas en un arreglo de char.*/
@@ -158,7 +157,7 @@ void Spotify::run(){
 				//Si se quiere salir del programa por completo
 				if (rUsuario.compare("salir")==0||rPassword.compare("salir")==0){
 					opc=1;
-				}else{
+				}else{//Si no existen los datos que ingresó
 					clear();
 					mvprintw(10,5,"Error en usuario o contraseña, presione una tecla para continuar.");
 					getch();
@@ -167,5 +166,15 @@ void Spotify::run(){
 		} while (respuestaGlobal.compare("7")!=0);
 		clear();
 	endwin();//Se finaliza la ventana de ncurses
-} while (opc==0);
+	} while (opc==0);
+	//Liberación de memoria
+	for (int i = 0; i < canciones.size(); ++i){
+		delete canciones[i];
+	}
+	for (int i = 0; i < cuentas.size(); ++i){
+		delete cuentas[i];
+	}
+	for (int i = 0; i < artistas.size(); ++i){
+		delete artistas[i];
+	}
 }

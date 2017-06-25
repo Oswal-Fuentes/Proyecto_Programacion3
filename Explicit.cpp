@@ -1,11 +1,11 @@
 #include "Explicit.h"
 
-Explicit::Explicit(string nombre,int duracion,int reproducciones,int favorito,Region* region,string artista){
+Explicit::Explicit(string nombre,int duracion,int reproducciones,int favorito,int regionInt,string artista){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->region=region;
+	this->regionInt=regionInt;
 	this->artista=artista;
 }
 

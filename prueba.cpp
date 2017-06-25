@@ -1,5 +1,3 @@
-#pragma once
-
 #include <ncurses.h>
 #include <string>
 #include <string.h>
@@ -38,11 +36,25 @@
 
 using namespace std;
 
-class Spotify{
-private:
-	//punteros y destructores
-public:
-	Spotify();
-	void run();
-	string toString();
-};
+int main(int argc, char const *argv[]){
+	Cancion c("Live forever",1,2,3,2,"Oasis");
+	cout<<c;
+	ofstream salida;
+	string ruta("./canciones.txt");
+	salida.open(ruta.c_str(),ios::out);
+	if (salida.fail()){
+		cout<<"No se puede abrir el archivo"<<endl;
+	}
+	salida<<c;
+	salida.flush();
+	salida.close();
+	return 0;
+}
+
+istream& operator>>(istream& entrada,vector<Cancion*>& canciones){
+	do{
+		string nombre;
+		getline(entrada,nombre);
+
+	} while (!entrada.eof());
+}

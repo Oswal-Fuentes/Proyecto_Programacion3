@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <ncurses.h>
-#include "Favoritos.h"
 #include "Playlist.h"
 #include "Cancion.h"
 #include "Persona.h"
