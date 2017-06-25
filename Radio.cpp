@@ -1,6 +1,6 @@
 #include "Radio.h"
 
-Radio::Radio(string nombre,int duracion,int reproducciones,int favorito){
+Radio::Radio(string nombre,int duracion,int reproducciones,int favorito,Region* region,string artista){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;

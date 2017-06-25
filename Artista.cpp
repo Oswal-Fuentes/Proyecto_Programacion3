@@ -23,11 +23,11 @@ string Artista::getNombre(){
 	return Nombre;
 }
 
-void setPersona(Persona persona){
+void Artista::setPersona(Persona persona){
 	this->persona=persona;
 }
 
-Persona getPersona(){
+Persona Artista::getPersona(){
 	return persona;
 }
 

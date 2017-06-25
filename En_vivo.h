@@ -10,7 +10,7 @@ using namespace std;
 class En_vivo:public Cancion{
 protected:
 public:
-	En_vivo(string,int,int,int,Region,string);
+	En_vivo(string,int,int,int,Region*,string);
 	En_vivo();
 
 	void Reproducir();

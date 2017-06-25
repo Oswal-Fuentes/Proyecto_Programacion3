@@ -17,6 +17,7 @@ protected:
     string nombre;
     string username;
     string password;
+    Persona persona;
     vector<Cuenta*>* perteneceA;
     vector<Cancion*> favoritos;
     vector<Cancion*> historial;

@@ -13,14 +13,11 @@ protected:
     int duracion;
     int reproducciones=0;
     int favorito;
-    Region region; 
-    string artista
+    Region* region; 
+    string artista;
 public:
-<<<<<<< HEAD
-    Cancion(string,int,int,int,Region);
-=======
-    Cancion(string,int,int,int,Region,string);
->>>>>>> 993ffd19f58d1106d043c1f22493f9306a7f0ae5
+
+    Cancion(string,int,int,int,Region*,string);
     Cancion();
 
     string getNombre();
@@ -35,14 +32,9 @@ public:
     int getFavorito();
     void setFavorito(int);
 
-<<<<<<< HEAD
-=======
     string getArtista();
     void setArtista(string);
 
-    
-
->>>>>>> 993ffd19f58d1106d043c1f22493f9306a7f0ae5
     virtual void Reproducir();
     virtual void Favorited();
 

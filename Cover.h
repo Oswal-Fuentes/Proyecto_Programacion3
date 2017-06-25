@@ -10,7 +10,7 @@ using namespace std;
 class Cover:public Cancion{
 protected:
 public:
-	Cover(string,int,int,int,Region,string);
+	Cover(string,int,int,int,Region*,string);
 	Cover();
 
 	void Reproducir();

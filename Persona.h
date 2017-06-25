@@ -20,7 +20,7 @@ public:
 	string getid();
 	void setid(string);
 
-	void agregarDinero();
+	void agregarDinero(int);
 
 };
 #endif

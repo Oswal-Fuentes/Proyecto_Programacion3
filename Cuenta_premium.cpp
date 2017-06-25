@@ -23,6 +23,7 @@ void Cuenta_premium::verHistorial(){
 	getch();
 	clear();
 }
+
 void Cuenta_premium::agregar_a_Playlist(Cancion* cancion){
 	clear();
 	for (int i = 0; i < playlists.size(); ++i)
@@ -53,7 +54,7 @@ void Cuenta_premium::agregar_a_Playlist(Cancion* cancion){
 void Cuenta_premium::cambiarTipo(){
 	clear();
 	mvprintw(5,5,"Ud es un cliente especial, le regalamos más meses hasta y dinero!!");
-	this->Persona->addDinero(15);
+	persona.agregarDinero(15);
 	clear();
 }
 
@@ -67,16 +68,16 @@ void Cuenta_premium::cancelarSuscripcion(){
 	string resp(respuesta);
 	if (resp.compare("s")!=0){
 		clear()	;
-		mvprintw(5,5,"Gracias!!!!!!")
-		this->Persona->addDinero(15);
+		mvprintw(5,5,"Gracias!!!!!!");
+		persona.agregarDinero(15);
 	}else{
 		clear();
-		mvprintw(5,5,"No tiene escapatoria muajajaja!!")
+		mvprintw(5,5,"No tiene escapatoria muajajaja!!");
 	}
 	getch();
 	clear();
 }
-void Cuenta_premium::borrarCuenta(int pos){
+void Cuenta_premium::borrarCuenta(){
 	clear();
 	for (int i = 0; i < 10; ++i){
 		mvprintw(5+i,5,"Se eliminó la cuenta");
@@ -88,23 +89,28 @@ void Cuenta_premium::borrarCuenta(int pos){
 void Cuenta_premium::reproducir(vector<Cancion*> cancionesActuales){
 	clear();
 	char respuesta[1000];
+	//Se listan las canciones
+	mvprintw(4,5,"Lista de canciones.");
 	for (int i = 0; i < cancionesActuales.size(); ++i){
-		
+		mvprintw(5+i,5,to_string(i).c_str());
+		mvprintw(5+i,7,cancionesActuales[i]->getNombre().c_str());
 	}
+	
 	//Menú reproducir
-	mvprintw(5,5,"Menú");
-	mvprintw(5,6,"1. Reproducir aleatoriamente");
-	mvprintw(5,7,"2. Agregar a favoritos");
-	mvprintw(5,8,"3. Ver historial");
-	mvprintw(5,9,"4. Agregar a playlist");
-	mvprintw(5,10,"5. Pásate a premium");
-	mvprintw(5,11,"6. Cancelar suscripcion");
-	mvprintw(5,12,"7. Borrar cuenta");
+	mvprintw(5+cancionesActuales.size(),5,"Menú");
+	mvprintw(5+cancionesActuales.size()+1,5, "1. Reproducir aleatoriamente");
+	mvprintw(5+cancionesActuales.size()+2,5, "2. Agregar a favoritos");
+	mvprintw(5+cancionesActuales.size()+3,5, "3. Ver historial");
+	mvprintw(5+cancionesActuales.size()+4,5, "4. Agregar a playlist");
+	mvprintw(5+cancionesActuales.size()+5,5, "Ingrese opción: ");
+
 	//Se lee la respuesta
 	getstr(respuesta);
 	string resp(respuesta);
+
 	//Cuando se escoge una opción
 	if (resp.compare("1")==0){
+		clear();
 		for (int i = 0; i < cancionesActuales.size(); ++i){
 			mvprintw(5+i,5,to_string(i).c_str());
 			mvprintw(5+i,7,cancionesActuales[i]->getNombre().c_str());
@@ -119,21 +125,15 @@ void Cuenta_premium::reproducir(vector<Cancion*> cancionesActuales){
 		historial.push_back(cancion);
 	}
 	if (resp.compare("2")==0){
+		clear();
 		agregar_a_Favoritos(cancionesActuales[0]);
 	}
 	if (resp.compare("3")==0){
+		clear();
 		verHistorial();
 	}
 	if (resp.compare("4")==0){
+		clear();
 		agregar_a_Playlist(cancionesActuales[0]);
-	}
-	if (resp.compare("5")==0){
-		cambiarTipo();
-	}
-	if (resp.compare("6")==0){
-		cancelarSuscripcion();
-	}
-	if (resp.compare("7")==0){
-		borrarCuenta();
 	}
 }
