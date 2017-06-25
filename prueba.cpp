@@ -64,12 +64,14 @@ void operator>>(string &ruta,vector<Cancion*> &canciones){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	do{
+		//Se leen los atributos
 		string tipo;
 		getline(entrada,tipo);
 		string nombre;
 		getline(entrada,nombre);
 		string artista;
 		getline(entrada,artista);
+		//Se crea la instancia según el tipo
 		if (tipo.compare("Cover")){
 			canciones.push_back(new Cover(nombre,artista,1,2,3));
 		}

@@ -40,6 +40,7 @@ public:
 
     friend ostream& operator<<(ostream& salida,Cancion& cancion){
         return salida<<
+                cancion.getTipo()<<endl<<
                 cancion.nombre<<endl<<
                 cancion.artista<<endl<<
                 cancion.duracion<<endl<<
