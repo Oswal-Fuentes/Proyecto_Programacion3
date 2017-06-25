@@ -1,11 +1,10 @@
 #include "Radio.h"
 
-Radio::Radio(string nombre,int duracion,int reproducciones,int favorito,int regionInt,string artista){
+Radio::Radio(string nombre,string artista,int duracion,int reproducciones,int favorito){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->regionInt=regionInt;
 	this->artista=artista;
 }
 
@@ -19,4 +18,8 @@ void Radio::Reproducir(){
 
 void Radio::Favorited(){
 	favorito+=2;
+}
+
+string Radio::getTipo(){
+	return "Radio";
 }

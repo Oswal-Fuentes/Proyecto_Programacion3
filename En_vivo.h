@@ -10,11 +10,12 @@ using namespace std;
 class En_vivo:public Cancion{
 protected:
 public:
-	En_vivo(string,int,int,int,int,string);
+	En_vivo(string,string,int,int,int);
 	En_vivo();
 
 	void Reproducir();
 	void Favorited();
 	
+	virtual string getTipo();
 };
 #endif

@@ -1,12 +1,11 @@
 #include "Cancion.h"
 
 
-Cancion::Cancion(string nombre,int duracion,int reproducciones,int favorito,int regionInt,string artista){
+Cancion::Cancion(string nombre,string artista,int duracion,int reproducciones,int favorito){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->regionInt=regionInt;
 	this->artista=artista;
 }
 Cancion::Cancion(){
@@ -43,4 +42,8 @@ void Cancion::Reproducir(){
 
 void Cancion::Favorited(){
 	favorito++;
+}
+
+string Cancion::getTipo(){
+	return "sinTipo";
 }

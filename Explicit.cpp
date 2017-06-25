@@ -1,11 +1,10 @@
 #include "Explicit.h"
 
-Explicit::Explicit(string nombre,int duracion,int reproducciones,int favorito,int regionInt,string artista){
+Explicit::Explicit(string nombre,string artista,int duracion,int reproducciones,int favorito){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->regionInt=regionInt;
 	this->artista=artista;
 }
 
@@ -21,4 +20,6 @@ void Explicit::Favorited(){
 	favorito+=3;
 }
 
-
+string Explicit::getTipo(){
+	return "Explicit";
+}

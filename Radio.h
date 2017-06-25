@@ -10,10 +10,12 @@ using namespace std;
 class Radio:public Cancion{
 protected:
 public:
-	Radio(string,int,int,int,int,string);
+	Radio(string,string,int,int,int);
 	Radio();
 
 	void Reproducir();
 	void Favorited();
+
+	virtual string getTipo();
 };
 #endif

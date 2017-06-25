@@ -10,11 +10,12 @@ using namespace std;
 class Cover:public Cancion{
 protected:
 public:
-	Cover(string,int,int,int,int,string);
+	Cover(string,string,int,int,int);
 	Cover();
 
 	void Reproducir();
 	void Favorited();
 
+	virtual string getTipo();
 };
 #endif

@@ -1,11 +1,10 @@
 #include "En_vivo.h"
 
-En_vivo::En_vivo(string nombre,int duracion,int reproducciones,int favorito,int regionInt,string artista){
+En_vivo::En_vivo(string nombre,string artista,int duracion,int reproducciones,int favorito){
 	this->nombre=nombre;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->regionInt=regionInt;
 	this->artista=artista;
 }
 
@@ -22,3 +21,6 @@ void En_vivo::Favorited(){
 }
 
 
+string En_vivo::getTipo(){
+	return "En_vivo";
+}

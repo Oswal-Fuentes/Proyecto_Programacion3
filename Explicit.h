@@ -10,11 +10,12 @@ using namespace std;
 class Explicit:public Cancion{
 protected:
 public:
-	Explicit(string,int,int,int,int,string);
+	Explicit(string,string,int,int,int);
 	Explicit();
 
 	void Reproducir();
 	void Favorited();
 
+	virtual string getTipo();
 };
 #endif

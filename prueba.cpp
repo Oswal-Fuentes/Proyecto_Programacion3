@@ -36,25 +36,51 @@
 
 using namespace std;
 
+void operator>>(string&,vector<Cancion*>&);
+
 int main(int argc, char const *argv[]){
-	Cancion c("Live forever",1,2,3,2,"Oasis");
+	Cancion c("Live forever","Oasis",1,2,3);
 	cout<<c;
-	ofstream salida;
+	//Se guardan las canciones en el archivo
+	ofstream archivo;
 	string ruta("./canciones.txt");
-	salida.open(ruta.c_str(),ios::out);
-	if (salida.fail()){
+	archivo.open(ruta.c_str(),ios::out);
+
+	//Si el archivo falla
+	if (archivo.fail()){
 		cout<<"No se puede abrir el archivo"<<endl;
 	}
-	salida<<c;
-	salida.flush();
-	salida.close();
+
+	archivo<<c;
+	archivo.flush();
+	//Se lee en un vector todas las canciones
+	vector<Cancion*> canciones;
+	ruta>>canciones;
+	cout<<*canciones[0]<<endl;
 	return 0;
 }
 
-istream& operator>>(istream& entrada,vector<Cancion*>& canciones){
+void operator>>(string &ruta,vector<Cancion*> &canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
 	do{
+		string tipo;
+		getline(entrada,tipo);
 		string nombre;
 		getline(entrada,nombre);
-
+		string artista;
+		getline(entrada,artista);
+		if (tipo.compare("Cover")){
+			canciones.push_back(new Cover(nombre,artista,1,2,3));
+		}
+		if (tipo.compare("En_vivo")){
+			canciones.push_back(new En_vivo(nombre,artista,1,2,3));
+		}
+		if (tipo.compare("Explicit")){
+			canciones.push_back(new Explicit(nombre,artista,1,2,3));
+		}
+		if (tipo.compare("Radio")){
+			canciones.push_back(new Radio(nombre,artista,1,2,3));
+		}
 	} while (!entrada.eof());
 }
