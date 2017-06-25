@@ -115,9 +115,12 @@ int main(int argc, char const *argv[]){
 	cout<<"PRUEBA DE PLAYLISTS"<<endl;
 	cout<<"----------------------------"<<endl;
 	vector<Playlist*> playlists;
-	playlists.push_back(new Playlist("1"));
-	playlists.push_back(new Playlist("2"));
+	playlists.push_back(new Playlist("Rock"));
+	playlists.push_back(new Playlist("Metal"));
 	
+	playlists[0]->setId("1");
+	playlists[1]->setId("2");
+
 	playlists[0]->addCancion(canciones[0]);
 	playlists[0]->addCancion(canciones[0]);
 	playlists[0]->addCancion(canciones[1]);
@@ -210,14 +213,17 @@ void operator>>(string &ruta,vector<Persona*> &personas){
 		getline(entrada,dinero);
 		personas.push_back(new Persona(id,atoi(dinero.c_str())));
 	} while (!entrada.eof());
+	personas.pop_back();
 	entrada.close();
 }
 
 void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion*>&canciones){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
+	bool final=false;
 	do{
 		//Se leen los atributos
+		cout<<"gatitos"<<endl;
 		string id;
 		getline(entrada,id);
 		string nombre;
@@ -229,7 +235,10 @@ void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion
 		string cancion;
 		getline(entrada,cancion);
 		while(cancion.compare("end")!=0){
+			/*cout<<"Cancion: "<<cancion<<endl;
+			cin>>id;*/
 			ptrPlaylist->addCancion(canciones[atoi(cancion.c_str())]);
+			getline(entrada,cancion);
 		}
 	} while (!entrada.eof());
 	entrada.close();

@@ -30,9 +30,9 @@ public:
 	friend ostream& operator<<(ostream& salida,Playlist& playlist){
 		string textocanciones="";
 		for (int i = 0; i < playlist.getCanciones().size(); ++i){
-			textocanciones+=textocanciones[i]+playlist.getCanciones()[i]->getId()+'\n';
+			textocanciones+=playlist.getCanciones()[i]->getId()+'\n';
 		}
-		textocanciones+="end\n";
+		textocanciones+="end";
 		return salida<<
 		playlist.id<<endl<<
 		playlist.nombre<<endl<<
