@@ -9,15 +9,18 @@ using namespace std;
 
 class Cancion{ 
 protected:
+    string id;
     string nombre;
+    string artista;
     int duracion;
     int reproducciones=0;
     int favorito;
-    string artista;
 public:
 
-    Cancion(string,string,int,int,int);
+    Cancion(string,string,string,int,int,int);
     Cancion();
+
+    string getId();
 
     string getNombre();
     void setNombre(string);
@@ -40,6 +43,7 @@ public:
 
     friend ostream& operator<<(ostream& salida,Cancion& cancion){
         return salida<<
+                cancion.id<<endl<<
                 cancion.getTipo()<<endl<<
                 cancion.nombre<<endl<<
                 cancion.artista<<endl<<

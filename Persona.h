@@ -8,10 +8,10 @@ using namespace std;
 
 class Persona{
 protected:
-	int dinero;
 	string id;
+	int dinero;
 public:
-	Persona(int,string);
+	Persona(string,int);
 	Persona();
 
 	int getDinero();
@@ -22,5 +22,10 @@ public:
 
 	void agregarDinero(int);
 
+	friend ostream& operator<<(ostream& salida,Persona& persona){
+        return salida<<
+                persona.id<<endl<<
+                persona.dinero<<endl;
+    }
 };
 #endif

@@ -37,26 +37,121 @@
 using namespace std;
 
 void operator>>(string&,vector<Cancion*>&);
+void operator>>(string&,vector<Persona*>&);
+void recuperarPlaylists(string&,vector<Playlist*>&,vector<Cancion*>&);
 
 int main(int argc, char const *argv[]){
-	Cancion c("Live forever","Oasis",1,2,3);
-	cout<<c;
-	//Se guardan las canciones en el archivo
 	ofstream archivo;
-	string ruta("./canciones.txt");
+	string ruta;
+	//Prueba de canciones
+	cout<<"----------------------------"<<endl;
+	cout<<"PRUEBA DE CANCIONES"<<endl;
+	cout<<"----------------------------"<<endl;
+	vector<Cancion*> canciones;
+	canciones.push_back(new Cover("1","Live forever","Oasis",1,2,3));
+	canciones.push_back(new En_vivo("2","Symphony of Destruction","Megadeth",1,2,3));
+	cout<<"VECTOR CREADO"<<endl;
+	for (int i = 0; i < canciones.size(); ++i){
+		cout<<*canciones[i];
+	}
+		//Se guardan las canciones en el archivo	
+	ruta="./canciones.txt";
 	archivo.open(ruta.c_str(),ios::out);
 
-	//Si el archivo falla
+		//Si el archivo falla
 	if (archivo.fail()){
 		cout<<"No se puede abrir el archivo"<<endl;
 	}
 
-	archivo<<c;
+	for (int i = 0; i < canciones.size(); ++i){
+		archivo<<*canciones[i];
+	}
 	archivo.flush();
-	//Se lee en un vector todas las canciones
-	vector<Cancion*> canciones;
+	archivo.close();
+	canciones.clear();
+		//Se lee en un vector todas las canciones
+	cout<<"VECTOR RECONSTRUIDO"<<endl;
 	ruta>>canciones;
-	cout<<*canciones[0]<<endl;
+	for (int i = 0; i < canciones.size(); ++i){
+		cout<<*canciones[i];
+	}
+
+
+	//Prueba de personas
+	cout<<"----------------------------"<<endl;
+	cout<<"PRUEBA DE PERSONAS"<<endl;
+	cout<<"----------------------------"<<endl;
+	vector<Persona*> personas;
+	personas.push_back(new Persona("1",0));
+	personas.push_back(new Persona("2",1));
+	cout<<"VECTOR CREADO"<<endl;
+	for (int i = 0; i < personas.size(); ++i){
+		cout<<*personas[i];
+	}
+		//Se guardan las personas en el archivo	
+	ruta="./personas.txt";
+	archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+	if (archivo.fail()){
+		cout<<"No se puede abrir el archivo"<<endl;
+	}
+
+	for (int i = 0; i < personas.size(); ++i){
+		archivo<<*personas[i];
+	}
+	archivo.flush();
+	archivo.close();
+	personas.clear();
+		//Se lee en un vector todas las personas
+	cout<<"VECTOR RECONSTRUIDO"<<endl;
+	ruta>>personas;
+	for (int i = 0; i < personas.size(); ++i){
+		cout<<*personas[i];
+	}
+
+	//Prueba de playlists
+	cout<<"----------------------------"<<endl;
+	cout<<"PRUEBA DE PLAYLISTS"<<endl;
+	cout<<"----------------------------"<<endl;
+	vector<Playlist*> playlists;
+	playlists.push_back(new Playlist("1"));
+	playlists.push_back(new Playlist("2"));
+	
+	playlists[0]->addCancion(canciones[0]);
+	playlists[0]->addCancion(canciones[0]);
+	playlists[0]->addCancion(canciones[1]);
+	
+	playlists[1]->addCancion(canciones[1]);
+	playlists[1]->addCancion(canciones[0]);
+	playlists[1]->addCancion(canciones[1]);
+
+	cout<<"VECTOR CREADO"<<endl;
+	for (int i = 0; i < playlists.size(); ++i){
+		cout<<*playlists[i];
+	}
+		//Se guardan las playlists en el archivo	
+	ruta="./playlists.txt";
+	archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+	if (archivo.fail()){
+		cout<<"No se puede abrir el archivo"<<endl;
+	}
+
+	for (int i = 0; i < playlists.size(); ++i){
+		archivo<<*playlists[i];
+	}
+	archivo.flush();
+	archivo.close();
+	playlists.clear();
+		//Se lee en un vector todas las playlists
+	cout<<"VECTOR RECONSTRUIDO"<<endl;
+	recuperarPlaylists(ruta,playlists,canciones);
+	for (int i = 0; i < playlists.size(); ++i){
+		cout<<*playlists[i];
+	}
+
 	return 0;
 }
 
@@ -65,24 +160,77 @@ void operator>>(string &ruta,vector<Cancion*> &canciones){
 	entrada.open(ruta,ios::in);
 	do{
 		//Se leen los atributos
+		string id;
+		getline(entrada,id);
 		string tipo;
 		getline(entrada,tipo);
 		string nombre;
 		getline(entrada,nombre);
 		string artista;
 		getline(entrada,artista);
+		string duracion;
+		getline(entrada,duracion);
+		string reproducciones;
+		getline(entrada,reproducciones);
+		string favorito;
+		getline(entrada,favorito);
 		//Se crea la instancia según el tipo
-		if (tipo.compare("Cover")){
-			canciones.push_back(new Cover(nombre,artista,1,2,3));
+		if (tipo.compare("Cover")==0){
+			canciones.push_back(new Cover(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
 		}
-		if (tipo.compare("En_vivo")){
-			canciones.push_back(new En_vivo(nombre,artista,1,2,3));
+		if (tipo.compare("En_vivo")==0){
+			canciones.push_back(new En_vivo(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
 		}
-		if (tipo.compare("Explicit")){
-			canciones.push_back(new Explicit(nombre,artista,1,2,3));
+		if (tipo.compare("Explicit")==0){
+			canciones.push_back(new Explicit(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
 		}
-		if (tipo.compare("Radio")){
-			canciones.push_back(new Radio(nombre,artista,1,2,3));
+		if (tipo.compare("Radio")==0){
+			canciones.push_back(new Radio(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
+		}
+		if (tipo.compare("sinTipo")==0){
+			canciones.push_back(new Cover(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
 		}
 	} while (!entrada.eof());
+	entrada.close();
+}
+
+void operator>>(string &ruta,vector<Persona*> &personas){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	do{
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string dinero;
+		getline(entrada,dinero);
+		personas.push_back(new Persona(id,atoi(dinero.c_str())));
+	} while (!entrada.eof());
+	entrada.close();
+}
+
+void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion*>&canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	do{
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string nombre;
+		getline(entrada,nombre);
+		playlists.push_back(new Playlist(nombre));
+		//Se obtiene la playlist
+		Playlist* ptrPlaylist=playlists[playlists.size()-1];
+		ptrPlaylist->setId(id);
+		string cancion;
+		getline(entrada,cancion);
+		while(cancion.compare("end")!=0){
+			ptrPlaylist->addCancion(canciones[atoi(cancion.c_str())]);
+		}
+	} while (!entrada.eof());
+	entrada.close();
 }

@@ -1,11 +1,12 @@
 #include "Cover.h"
 
-Cover::Cover(string nombre,string artista,int duracion,int reproducciones,int favorito){
+Cover::Cover(string id,string nombre,string artista,int duracion,int reproducciones,int favorito){
+	this->id=id;
 	this->nombre=nombre;
+	this->artista=artista;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->artista=artista;
 }
 Cover::Cover(){
 

@@ -10,7 +10,7 @@ using namespace std;
 class Radio:public Cancion{
 protected:
 public:
-	Radio(string,string,int,int,int);
+	Radio(string,string,string,int,int,int);
 	Radio();
 
 	void Reproducir();

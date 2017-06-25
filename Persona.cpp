@@ -1,6 +1,6 @@
 #include "Persona.h"
 
-Persona::Persona(int dinero,string id){
+Persona::Persona(string id,int dinero){
 	this->dinero=dinero;
 	this->id=id;	
 }

@@ -1,11 +1,12 @@
 #include "En_vivo.h"
 
-En_vivo::En_vivo(string nombre,string artista,int duracion,int reproducciones,int favorito){
+En_vivo::En_vivo(string id,string nombre,string artista,int duracion,int reproducciones,int favorito){
+	this->id=id;
 	this->nombre=nombre;
+	this->artista=artista;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->artista=artista;
 }
 
 En_vivo::En_vivo(){

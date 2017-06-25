@@ -2,6 +2,7 @@
 
 Playlist::Playlist(string nombre){
 	this->nombre=nombre;
+	this->id=id;
 }
 Playlist::Playlist(){
 
@@ -23,4 +24,8 @@ void Playlist::setCanciones(vector<Cancion*> canciones) {
 
 void Playlist::addCancion(Cancion* cancion){
 	canciones.push_back(cancion);
+}
+
+void Playlist::setId(string id){
+	this->id=id;
 }

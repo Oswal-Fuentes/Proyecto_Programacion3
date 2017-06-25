@@ -10,11 +10,14 @@ using namespace std;
 
 class Playlist{
 protected:
+	string id;
 	string nombre;
 	vector<Cancion*>canciones;
 public:
 	Playlist(string);
 	Playlist();
+
+	void setId(string);
 
 	string getNombre();
 	void setNombre(string);
@@ -24,6 +27,17 @@ public:
 
 	void addCancion(Cancion*);
 
+	friend ostream& operator<<(ostream& salida,Playlist& playlist){
+		string textocanciones="";
+		for (int i = 0; i < playlist.getCanciones().size(); ++i){
+			textocanciones+=textocanciones[i]+playlist.getCanciones()[i]->getId()+'\n';
+		}
+		textocanciones+="end\n";
+		return salida<<
+		playlist.id<<endl<<
+		playlist.nombre<<endl<<
+		textocanciones<<endl;
+	}
 	
 };
 #endif

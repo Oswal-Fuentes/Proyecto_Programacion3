@@ -1,11 +1,12 @@
 #include "Radio.h"
 
-Radio::Radio(string nombre,string artista,int duracion,int reproducciones,int favorito){
+Radio::Radio(string id,string nombre,string artista,int duracion,int reproducciones,int favorito){
+	this->id=id;
 	this->nombre=nombre;
+	this->artista=artista;
 	this->duracion=duracion;
 	this->reproducciones=reproducciones;
 	this->favorito=favorito;
-	this->artista=artista;
 }
 
 Radio::Radio(){
