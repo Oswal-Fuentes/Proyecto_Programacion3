@@ -408,7 +408,7 @@ delete usuarioActual;
 }
 
 
-void recuperarCanciones(string &ruta,vector<Cancion*> &canciones){
+void Spotify::recuperarCanciones(string &ruta,vector<Cancion*> &canciones){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	do{
@@ -452,7 +452,7 @@ void recuperarCanciones(string &ruta,vector<Cancion*> &canciones){
 	entrada.close();
 }
 
-void recuperarPersonas(string &ruta,vector<Persona*> &personas){
+void Spotify::recuperarPersonas(string &ruta,vector<Persona*> &personas){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	do{
@@ -467,7 +467,7 @@ void recuperarPersonas(string &ruta,vector<Persona*> &personas){
 	entrada.close();
 }
 
-void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion*>&canciones){
+void Spotify::recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion*>&canciones){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	bool final=false;
@@ -504,7 +504,7 @@ void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion
 }
 
 
-void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canciones){
+void Spotify::recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canciones){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	bool final=false;
@@ -540,7 +540,7 @@ void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canc
 	entrada.close();
 }
 
-void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&albumes,vector<Persona*>&personas){
+void Spotify::recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&albumes,vector<Persona*>&personas){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	bool final=false;

@@ -121,7 +121,7 @@ void Cuenta_premium::reproducir(vector<Cancion*> cancionesActuales){
 		int pos=atoi(respuesta2);
 		Cancion* cancion;
 		cancion=cancionesActuales[pos];
-		cancion->Reproducir();
+		cancion++;
 		historial.push_back(cancion);
 	}
 	if (resp.compare("2")==0){
