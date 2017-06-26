@@ -173,7 +173,7 @@ void Spotify::run(){
 						for(int i=100000;i>=0;i--){
 							for(int j=0;j<canciones.size();j++){
 								if(canciones[j]->getReproducciones()==i){
-									if(canciones[j]->getTipo()=!"Explicit"){
+									if(canciones[j]->getTipo()!="Explicit"){
 										socialista_temp.push_back(canciones[i]);
 									}
 								}
