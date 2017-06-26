@@ -1,14 +1,42 @@
 1
+Explicit
+Toxicity
+System Of A Down
+3
+0
+0
+2
+Radio
+B.Y.O.B
+System Of A Down
+4
+0
+0
+3
 Cover
-Live forever
-Oasis
-1
-2
-3
-2
-En_vivo
-Symphony of Destruction
+A Tout Le Monde
 Megadeth
-1
-2
+4
+0
+0
+4
+Explicit
+Hangar 18
+Megadeth
 3
+0
+0
+5
+Radio
+Stairway To Heaven
+Led Zeppelin
+5
+0
+0
+6
+Cover
+Immigrant Song
+Led Zeppelin
+4
+0
+0
