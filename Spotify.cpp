@@ -167,7 +167,15 @@ void Spotify::run(){
 								}
 							}
 						}
-						//----
+						clear();
+						for (int i = 0; i < global_temp.size(); ++i){
+							mvprintw(5+i,5,to_string(i).c_str());
+							mvprintw(5+i,7,canciones[i]->getNombre().c_str());
+						}
+						mvprintw(5+canciones.size()+1,5,"Ingrese la canción que desea reproducir: ");
+						getstr(respuesta);
+						int pos=atoi(respuesta);
+						canciones[pos]->Reproducir();
 					}
 					if(temp_resp=="2"){
 						for(int i=100000;i>=0;i--){
@@ -179,7 +187,15 @@ void Spotify::run(){
 								}
 							}
 						}
-						//----
+						clear();
+						for (int i = 0; i < socialista_temp.size(); ++i){
+							mvprintw(5+i,5,to_string(i).c_str());
+							mvprintw(5+i,7,canciones[i]->getNombre().c_str());
+						}
+						mvprintw(5+canciones.size()+1,5,"Ingrese la canción que desea reproducir: ");
+						getstr(respuesta);
+						int pos=atoi(respuesta);
+						canciones[pos]->Reproducir();
 					}
 					if(temp_resp=="3"){
 						for(int i=100000;i>=0;i--){
@@ -189,7 +205,15 @@ void Spotify::run(){
 								}
 							}
 						}
-						//------
+						clear();
+						for (int i = 0; i < global_temp.size(); ++i){
+							mvprintw(5+i,5,to_string(i).c_str());
+							mvprintw(5+i,7,canciones[i]->getNombre().c_str());
+						}
+						mvprintw(5+canciones.size()+1,5,"Ingrese la canción que desea reproducir: ");
+						getstr(respuesta);
+						int pos=atoi(respuesta);
+						canciones[pos]->Reproducir();
 					}
 					if(temp_resp=="4"){
 
