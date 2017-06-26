@@ -1,10 +1,9 @@
 #include "Cuenta.h"
 
-Cuenta::Cuenta(string nombre,string username,string password,vector<Cuenta*>* perteneceA,int dinero,string id){
+Cuenta::Cuenta(string nombre,string username,string password,int dinero,string id){
 	this->nombre=nombre;
 	this->username=username;
 	this->password=password;
-	this->perteneceA=perteneceA;
 	this->dinero=dinero;
 	this->id=id;
 }
@@ -46,4 +45,25 @@ vector<Playlist*> Cuenta::getPlaylists() {
 }
 void Cuenta::setPlaylists(vector<Playlist*>playlists) {
 	this->playlists = playlists;
+}
+void Cuenta::addFavorito(Cancion* cancion){
+	favoritos.push_back(cancion);
+}
+void Cuenta::addHistorial(Cancion* cancion){
+	historial.push_back(cancion);
+}
+void Cuenta::addPlaylist(Playlist* playlist){
+	playlists.push_back(playlist);
+}
+void Cuenta::setPersona(Persona* persona){
+	this->persona=persona;
+}
+Persona* Cuenta::getPersona(){
+	return persona;
+}
+Cuenta::~Cuenta(){
+	delete persona;
+}
+string Cuenta::getTipo(){
+	return "sinTipo";
 }

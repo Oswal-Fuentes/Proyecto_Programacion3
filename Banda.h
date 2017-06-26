@@ -19,5 +19,7 @@ public:
 	void setIntegrantes(vector<Persona*>);
 
 	void Pagar();
+
+	string getTipo();
 };
 #endif

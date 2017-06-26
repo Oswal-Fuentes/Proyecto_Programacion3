@@ -20,5 +20,6 @@ public:
     void cancelarSuscripcion();
     void borrarCuenta();
     void reproducir(vector<Cancion*>);
+    string getTipo();
 };
 #endif

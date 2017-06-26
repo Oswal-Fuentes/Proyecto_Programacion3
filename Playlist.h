@@ -18,6 +18,7 @@ public:
 	Playlist();
 
 	void setId(string);
+	string getId();
 
 	string getNombre();
 	void setNombre(string);

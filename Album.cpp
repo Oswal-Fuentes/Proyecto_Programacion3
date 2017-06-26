@@ -24,3 +24,15 @@ void Album::setCanciones(vector<Cancion*> canciones) {
 void Album::dibujarPortada(){
 
 }
+
+void Album::addCancion(Cancion* cancion){
+	canciones.push_back(cancion);
+}
+
+string Album::getId(){
+	return id;
+}
+
+void Album::setId(string id){
+	this->id=id;
+}

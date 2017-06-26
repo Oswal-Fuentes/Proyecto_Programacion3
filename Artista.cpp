@@ -3,34 +3,42 @@
 Artista::Artista(){
 }
 
-Artista::Artista(string Nombre){
-	this->Nombre=Nombre;
+Artista::Artista(string nombre){
+	this->nombre=nombre;
 }
 
 vector<Album*> Artista::getAlbumes() {
-	return Albumes;
+	return albumes;
 }
 
-void Artista::setAlbumes(vector<Album*>Albumes) {
-	this->Albumes = Albumes;
+void Artista::setAlbumes(vector<Album*>albumes) {
+	this->albumes = albumes;
 }
 
-void Artista::setNombre(string Nombre){
-	this->Nombre=Nombre;
+void Artista::setNombre(string nombre){
+	this->nombre=nombre;
 }
 
 string Artista::getNombre(){
-	return Nombre;
-}
-
-void Artista::setPersona(Persona persona){
-	this->persona=persona;
-}
-
-Persona Artista::getPersona(){
-	return persona;
+	return nombre;
 }
 
 void Artista::Pagar(){
 	
+}
+
+void Artista::addAlbum(Album* album){
+	albumes.push_back(album);
+}
+
+string Artista::getTipo(){
+	return "sinTipo";
+}
+
+vector<Persona*> Artista::getPersonas(){
+	return personas;
+}
+
+void Artista::addPersona(Persona* persona){
+	personas.push_back(persona);
 }

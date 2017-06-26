@@ -109,3 +109,7 @@ void Cuenta_normal::reproducir(vector<Cancion*> cancionesActuales){
 		agregar_a_Playlist(cancionesActuales[0]);
 	}
 }
+
+string Cuenta_normal::getTipo(){
+	return "Cuenta_normal";
+}

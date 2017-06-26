@@ -54,7 +54,7 @@ void Cuenta_premium::agregar_a_Playlist(Cancion* cancion){
 void Cuenta_premium::cambiarTipo(){
 	clear();
 	mvprintw(5,5,"Ud es un cliente especial, le regalamos más meses hasta y dinero!!");
-	persona.agregarDinero(15);
+	persona->agregarDinero(15);
 	clear();
 }
 
@@ -69,7 +69,7 @@ void Cuenta_premium::cancelarSuscripcion(){
 	if (resp.compare("s")!=0){
 		clear()	;
 		mvprintw(5,5,"Gracias!!!!!!");
-		persona.agregarDinero(15);
+		persona->agregarDinero(15);
 	}else{
 		clear();
 		mvprintw(5,5,"No tiene escapatoria muajajaja!!");
@@ -136,4 +136,8 @@ void Cuenta_premium::reproducir(vector<Cancion*> cancionesActuales){
 		clear();
 		agregar_a_Playlist(cancionesActuales[0]);
 	}
+}
+
+string Cuenta_premium::getTipo(){
+	return "Cuenta_premium";
 }
