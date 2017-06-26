@@ -45,4 +45,11 @@ public:
 	Spotify();
 	void run();
 	string toString();
+	void recuperarCanciones(string&,vector<Cancion*>&);
+	void recuperarPersonas(string&,vector<Persona*>&);
+	void recuperarPlaylists(string&,vector<Playlist*>&,vector<Cancion*>&);
+	void recuperarAlbumes(string&,vector<Album*>&,vector<Cancion*>&);
+	void recuperarArtistas(string&,vector<Artista*>&,vector<Album*>&,vector<Persona*>&);
+	void recuperarCuentas(string &,vector<Cuenta*> &,
+		vector<Cancion*>&,vector<Playlist*>&,vector<Persona*>&);
 };

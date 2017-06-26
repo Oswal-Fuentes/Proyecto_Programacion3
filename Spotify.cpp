@@ -7,10 +7,14 @@ Spotify::Spotify(){
 }
 
 void Spotify::run(){
-	vector<Cancion*> canciones;
 	vector<Cuenta*> cuentas;
 	Cuenta* usuarioActual;
+	//Personas
+	vector<Persona*> personas;
+	personas.push_back(new Persona("1",0));
+	personas.push_back(new Persona("2",1));
 	//Canciones
+	vector<Cancion*> canciones;
 	canciones.push_back(new Explicit("1","Toxicity","System Of A Down",3,0,0));
 	canciones.push_back(new Radio("2","B.Y.O.B","System Of A Down",4,0,0));
 	canciones.push_back(new Cover("3","A Tout Le Monde","Megadeth",4,0,0));
@@ -21,8 +25,8 @@ void Spotify::run(){
 	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Alessandro","ale","123",&cuentas));
-	vector<Artista*> artistas;
 	//Artistas
+	vector<Artista*> artistas;
 	artistas.push_back(new Artista("System Of A Down"));
 	artistas.push_back(new Artista("Megadeth"));
 	artistas.push_back(new Artista("Led Zeppelin"));
@@ -49,6 +53,42 @@ void Spotify::run(){
 	pArtista2->setAlbumes(albumes);
 	pArtista3->setAlbumes(albumes);
 	pArtista3->setAlbumes(albumes);
+	albumes[0]->setId("1");
+	albumes[1]->setId("2");
+	albumes[0]->addCancion(canciones[0]);
+	albumes[0]->addCancion(canciones[0]);
+	albumes[0]->addCancion(canciones[1]);
+	albumes[1]->addCancion(canciones[1]);
+	albumes[1]->addCancion(canciones[0]);
+	albumes[1]->addCancion(canciones[1]);
+	artistas[0]->addAlbum(albumes[0]);
+	artistas[0]->addAlbum(albumes[0]);
+	artistas[0]->addAlbum(albumes[1]);
+	
+	artistas[1]->addAlbum(albumes[1]);
+	artistas[1]->addAlbum(albumes[0]);
+	artistas[1]->addAlbum(albumes[1]);
+
+	artistas[0]->addPersona(personas[0]);
+	artistas[0]->addPersona(personas[0]);
+	artistas[0]->addPersona(personas[1]);
+	
+	artistas[1]->addPersona(personas[1]);
+	artistas[1]->addPersona(personas[0]);
+	artistas[1]->addPersona(personas[1]);
+	//Playlists
+	vector<Playlist*> playlists;
+	playlists.push_back(new Playlist("Rock"));
+	playlists.push_back(new Playlist("Metal"));
+	playlists[0]->setId("1");
+	playlists[1]->setId("2");
+	playlists[0]->addCancion(canciones[0]);
+	playlists[0]->addCancion(canciones[0]);
+	playlists[0]->addCancion(canciones[1]);
+	playlists[1]->addCancion(canciones[1]);
+	playlists[1]->addCancion(canciones[0]);
+	playlists[1]->addCancion(canciones[1]);
+
 	int opc=0;
 	do{
 		char respuesta[1000];
@@ -245,6 +285,20 @@ void Spotify::run(){
 				//Si se quiere salir del programa por completo
 				if (rUsuario.compare("salir")==0||rPassword.compare("salir")==0){
 					opc=1;
+				}else if(rUsuario.compare("cargar")||rPassword.compare("cargar")){
+					string ruta;
+					ruta="./canciones.txt";
+					recuperarCanciones(ruta,canciones);
+					ruta="./personas.txt";
+					recuperarPersonas(ruta,personas);
+					ruta="./playlists.txt";
+					recuperarPlaylists(ruta, playlists,canciones);
+					ruta="./albumes.txt";
+					recuperarAlbumes(ruta,albumes, canciones);
+					ruta="./artistas.txt";
+					recuperarArtistas(ruta, artistas, albumes, personas);
+					/*void recuperarCuentas(string &,vector<Cuenta*> &,
+						vector<Cancion*>&,vector<Playlist*>&,vector<Persona*>&);*/
 				}else{//Si no existen los datos que ingresó
 					clear();
 					mvprintw(10,5,"Error en usuario o contraseña, presione una tecla para continuar.");
@@ -255,6 +309,88 @@ void Spotify::run(){
 		clear();
 	endwin();//Se finaliza la ventana de ncurses
 } while (opc==0);
+	//Guardar en archivos
+
+ofstream archivo;
+string ruta;
+
+	/*CANCIONES*/
+ruta="./canciones.txt";
+archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+if (archivo.fail()){
+	cout<<"No se puede abrir el archivo"<<endl;
+}
+
+for (int i = 0; i < canciones.size(); ++i){
+	archivo<<*canciones[i];
+}
+archivo.flush();
+archivo.close();
+
+	/*PERSONAS*/
+ruta="./personas.txt";
+archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+if (archivo.fail()){
+	cout<<"No se puede abrir el archivo"<<endl;
+}
+
+for (int i = 0; i < personas.size(); ++i){
+	archivo<<*personas[i];
+}
+archivo.flush();
+archivo.close();
+
+	/*PLAYLISTS*/
+ruta="./playlists.txt";
+archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+if (archivo.fail()){
+	cout<<"No se puede abrir el archivo"<<endl;
+}
+
+for (int i = 0; i < playlists.size(); ++i){
+	archivo<<*playlists[i];
+}
+archivo.flush();
+archivo.close();
+
+	/*ALBUMS*/
+ruta="./albumes.txt";
+archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+if (archivo.fail()){
+	cout<<"No se puede abrir el archivo"<<endl;
+}
+
+for (int i = 0; i < albumes.size(); ++i){
+	archivo<<*albumes[i];
+}
+	//archivo<<"endOfFile";
+archivo.flush();
+archivo.close();
+
+	/*ARTISTAS*/
+ruta="./artistas.txt";
+archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+if (archivo.fail()){
+	cout<<"No se puede abrir el archivo"<<endl;
+}
+
+for (int i = 0; i < artistas.size(); ++i){
+	archivo<<*artistas[i];
+}
+	//archivo<<"endOfFile";
+archivo.flush();
+archivo.close();
+
 	//Liberación de memoria
 for (int i = 0; i < canciones.size(); ++i){
 	delete canciones[i];
@@ -269,4 +405,184 @@ for (int i = 0; i < albumes.size(); ++i){
 	delete albumes[i];
 }
 delete usuarioActual;
+}
+
+
+void recuperarCanciones(string &ruta,vector<Cancion*> &canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	do{
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string tipo;
+		getline(entrada,tipo);
+		string nombre;
+		getline(entrada,nombre);
+		string artista;
+		getline(entrada,artista);
+		string duracion;
+		getline(entrada,duracion);
+		string reproducciones;
+		getline(entrada,reproducciones);
+		string favorito;
+		getline(entrada,favorito);
+		//Se crea la instancia según el tipo
+		if (tipo.compare("Cover")==0){
+			canciones.push_back(new Cover(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
+		}
+		if (tipo.compare("En_vivo")==0){
+			canciones.push_back(new En_vivo(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
+		}
+		if (tipo.compare("Explicit")==0){
+			canciones.push_back(new Explicit(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
+		}
+		if (tipo.compare("Radio")==0){
+			canciones.push_back(new Radio(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
+		}
+		if (tipo.compare("sinTipo")==0){
+			canciones.push_back(new Cover(id,nombre,artista,
+				atoi(duracion.c_str()),atoi(reproducciones.c_str()),atoi(favorito.c_str())));
+		}
+	} while (!entrada.eof());
+	entrada.close();
+}
+
+void recuperarPersonas(string &ruta,vector<Persona*> &personas){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	do{
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string dinero;
+		getline(entrada,dinero);
+		personas.push_back(new Persona(id,atoi(dinero.c_str())));
+	} while (!entrada.eof());
+	personas.pop_back();
+	entrada.close();
+}
+
+void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion*>&canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	bool final=false;
+	while (!entrada.eof()){
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string nombre;
+		getline(entrada,nombre);
+		playlists.push_back(new Playlist(nombre));
+		//Se obtiene la playlist
+		Playlist* ptrPlaylist=playlists[playlists.size()-1];
+		ptrPlaylist->setId(id);
+		string cancion;
+		getline(entrada,cancion);
+		while(cancion.compare("end")!=0){
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(cancion)==0){
+					ptrPlaylist->addCancion(canciones[i]);
+				}
+			}
+			getline(entrada,cancion);
+			if(cancion.compare("")==0){
+				final=true;
+				break;
+			}
+		}
+		if (final==true){
+			break;
+		}
+	}
+	playlists.pop_back();
+	entrada.close();
+}
+
+
+void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	bool final=false;
+	while (!entrada.eof()){
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string nombre;
+		getline(entrada,nombre);
+		albumes.push_back(new Album(nombre));
+		//Se obtiene el album
+		Album* ptrAlbum=albumes[albumes.size()-1];
+		ptrAlbum->setId(id);
+		string cancion;
+		getline(entrada,cancion);
+		while(cancion.compare("end")!=0){
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(cancion)==0){
+					ptrAlbum->addCancion(canciones[i]);
+				}
+			}
+			getline(entrada,cancion);
+			if(cancion.compare("")==0){
+				final=true;
+				break;
+			}
+		}
+		if (final==true){
+			break;
+		}
+	}
+	albumes.pop_back();
+	entrada.close();
+}
+
+void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&albumes,vector<Persona*>&personas){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	bool final=false;
+	while (!entrada.eof()){
+		//Se leen los atributos
+		string nombre;
+		getline(entrada,nombre);
+		artistas.push_back(new Artista(nombre));
+		//Se obtiene el artista
+		Artista* ptrArtista=artistas[artistas.size()-1];
+		string album;
+		getline(entrada,album);
+		while(album.compare("end")!=0){
+			for (int i = 0; i < albumes.size(); ++i){
+				if (albumes[i]->getId().compare(album)==0){
+					ptrArtista->addAlbum(albumes[i]);
+				}
+			}
+			if(album.compare("")==0){
+				final=true;
+				break;
+			}
+			getline(entrada,album);
+		}
+		if (final==true){
+			break;
+		}
+		string persona;
+		getline(entrada,persona);
+		while(persona.compare("end")!=0){
+			for (int i = 0; i < personas.size(); ++i){
+				if (personas[i]->getId().compare(persona)==0){
+					ptrArtista->addPersona(personas[i]);
+				}
+			}
+			if(album.compare("")==0){
+				final=true;
+				break;
+			}
+			getline(entrada,album);
+		}
+	}
+	artistas.pop_back();
+	entrada.close();
 }
