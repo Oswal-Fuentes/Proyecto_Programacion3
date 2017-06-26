@@ -298,6 +298,9 @@ void Spotify::run(){
 					recuperarAlbumes(ruta,albumes, canciones);
 					ruta="./artistas.txt";
 					recuperarArtistas(ruta, artistas, albumes, personas);
+					clear();
+					mvprintw(10,5,"Se cargaron archivos, presione una tecla para continuar.");
+					getch();
 					/*void recuperarCuentas(string &,vector<Cuenta*> &,
 						vector<Cancion*>&,vector<Playlist*>&,vector<Persona*>&);*/
 				}else{//Si no existen los datos que ingresó
