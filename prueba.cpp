@@ -40,7 +40,9 @@ void operator>>(string&,vector<Cancion*>&);
 void operator>>(string&,vector<Persona*>&);
 void recuperarPlaylists(string&,vector<Playlist*>&,vector<Cancion*>&);
 void recuperarAlbumes(string&,vector<Album*>&,vector<Cancion*>&);
-void recuperarArtistas(string&,vector<Artista*>&,vector<Album*>&);
+void recuperarArtistas(string&,vector<Artista*>&,vector<Album*>&,vector<Persona*>&);
+void recuperarCuentas(string &,vector<Cuenta*> &,
+	vector<Cancion*>&,vector<Playlist*>&,vector<Persona*>&);
 
 int main(int argc, char const *argv[]){
 	ofstream archivo;
@@ -229,6 +231,14 @@ int main(int argc, char const *argv[]){
 	artistas[1]->addAlbum(albumes[0]);
 	artistas[1]->addAlbum(albumes[1]);
 
+	artistas[0]->addPersona(personas[0]);
+	artistas[0]->addPersona(personas[0]);
+	artistas[0]->addPersona(personas[1]);
+	
+	artistas[1]->addPersona(personas[1]);
+	artistas[1]->addPersona(personas[0]);
+	artistas[1]->addPersona(personas[1]);
+
 	cout<<"VECTOR CREADO"<<endl;
 	for (int i = 0; i < artistas.size(); ++i){
 		cout<<*artistas[i];
@@ -251,14 +261,75 @@ int main(int argc, char const *argv[]){
 	artistas.clear();
 		//Se lee en un vector todas las artistas
 	cout<<"VECTOR RECONSTRUIDO"<<endl;
-	recuperarArtistas(ruta,artistas,albumes);
+	recuperarArtistas(ruta,artistas,albumes,personas);
+
 	for (int i = 0; i < artistas.size(); ++i){
 		cout<<*artistas[i];
 	}
-	cout<<"Canciones de artistas[0]"<<endl;
+	
+	cout<<"Albumes de artistas[0]"<<endl;
 	for (int i = 0; i < artistas[0]->getAlbumes().size(); ++i){
 		cout<<*(artistas[0]->getAlbumes()[i]);
 	}
+
+	cout<<"Personas de artista[0]"<<endl;
+	for (int i = 0; i < artistas[0]->getPersonas().size(); ++i){
+		cout<<*(artistas[0]->getPersonas()[i]);
+	}
+
+
+	//Prueba de cuentas
+	cout<<"----------------------------"<<endl;
+	cout<<"PRUEBA DE CUENTAS"<<endl;
+	cout<<"----------------------------"<<endl;
+	vector<Cuenta*> cuentas;
+	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",cuentas));
+	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",cuentas));
+
+	cuentas[0]->addFavorito(canciones[0]);
+	cuentas[0]->addHistorial(canciones[0]);
+	cuentas[0]->addPlaylist(playlists[1]);
+	
+	cuentas[1]->addFavorito(canciones[1]);
+	cuentas[1]->addHistorial(canciones[0]);
+	cuentas[1]->addPlaylist(playlists[1]);
+
+	cuentas[0]->addFavorito(canciones[0]);
+	cuentas[0]->addHistorial(canciones[0]);
+	cuentas[0]->addPlaylist(playlists[1]);
+	
+	cuentas[1]->addPersona(canciones[1]);
+	cuentas[1]->addPersona(canciones[0]);
+	cuentas[1]->addPersona(playlists[1]);
+
+	cout<<"VECTOR CREADO"<<endl;
+	for (int i = 0; i < cuentas.size(); ++i){
+		cout<<*cuentas[i];
+	}
+		//Se guardan las cuentas en el archivo	
+	ruta="./cuentas.txt";
+	archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+	if (archivo.fail()){
+		cout<<"No se puede abrir el archivo"<<endl;
+	}
+
+	for (int i = 0; i < cuentas.size(); ++i){
+		archivo<<*cuentas[i];
+	}
+	//archivo<<"endOfFile";
+	archivo.flush();
+	archivo.close();
+	cuentas.clear();
+		//Se lee en un vector todas las cuentas
+	cout<<"VECTOR RECONSTRUIDO"<<endl;
+	recuperarArtistas(ruta,cuentas,canciones,playlists,personas);
+
+	for (int i = 0; i < cuentas.size(); ++i){
+		cout<<*cuentas[i];
+	}
+
 
 	return 0;
 }
@@ -395,7 +466,7 @@ void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canc
 	entrada.close();
 }
 
-void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&albumes){
+void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&albumes,vector<Persona*>&personas){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	bool final=false;
@@ -414,16 +485,113 @@ void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&al
 					ptrArtista->addAlbum(albumes[i]);
 				}
 			}
-			getline(entrada,album);
 			if(album.compare("")==0){
 				final=true;
 				break;
 			}
+			getline(entrada,album);
 		}
 		if (final==true){
 			break;
 		}
+		string persona;
+		getline(entrada,persona);
+		while(persona.compare("end")!=0){
+			for (int i = 0; i < personas.size(); ++i){
+				if (personas[i]->getId().compare(persona)==0){
+					ptrArtista->addPersona(personas[i]);
+				}
+			}
+			if(album.compare("")==0){
+				final=true;
+				break;
+			}
+			getline(entrada,album);
+		}
 	}
 	artistas.pop_back();
+	entrada.close();
+}
+
+void recuperarCuentas(string &ruta,vector<Cuenta*> &cuentas,
+	vector<Cancion*>&canciones,vector<Playlist*>&playlists,vector<Persona*>& personas){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	bool final=false;
+	while (!entrada.eof()){
+		//Se obtiene la cuenta
+		string tipo;
+		getline(entrada,tipo);
+		if (tipo.compare("Cuenta_premium")==0){
+			cuentas.push_back(new Cuenta_premium());
+		}else{
+			cuentas.push_back(new Cuenta_premium());
+		}
+		
+		Cuenta* ptrCuenta=cuentas[cuentas.size()-1];
+		//Se leen los atributos
+		string nombre;
+		getline(entrada,nombre);
+		ptrCuenta->setNombre(nombre);
+		string username;
+		getline(entrada,username);
+		ptrCuenta->setUsername(username);
+		string password;
+		getline(entrada,password);
+		ptrCuenta->setPassword(password);
+		string persona;
+		getline(entrada,persona);
+		for (int i = 0; i < personas.size(); ++i){
+			if (persona.compare(personas[i]->getId())==0){
+				ptrCuenta->setPersona(personas[i]);
+			}
+		}
+		string favorito;
+		getline(entrada,favorito);
+		while(favorito.compare("end")!=0){
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(favorito)==0){
+					ptrCuenta->addFavorito(canciones[i]);
+				}
+			}
+			if(favorito.compare("")==0){
+				final=true;
+				break;
+			}
+			getline(entrada,favorito);
+		}
+		if (final==true){
+			break;
+		}
+		string historial;
+		getline(entrada,historial);
+		while(historial.compare("end")!=0){
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(historial)==0){
+					ptrCuenta->addHistorial(canciones[i]);
+				}
+			}
+			if(historial.compare("")==0){
+				final=true;
+				break;
+			}
+			getline(entrada,historial);
+		}
+		string playlist;
+		getline(entrada,playlist);
+		while(playlist.compare("end")!=0){
+			for (int i = 0; i < playlists.size(); ++i){
+				if (playlists[i]->getId().compare(playlist)==0){
+					ptrCuenta->addPlaylist(playlists[i]);
+				}
+			}
+			if(playlist.compare("")==0){
+				final=true;
+				break;
+			}
+			getline(entrada,playlist);
+		}
+	}
+	cuentas.pop_back();
 	entrada.close();
 }

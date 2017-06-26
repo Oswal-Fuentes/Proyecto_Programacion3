@@ -1,14 +1,11 @@
 #include "Solista.h"
 
-Solista::Solista(Persona persona){
-	this->persona=persona;
-}
 Solista::Solista(){
 
 }
 
 void Solista::Pagar(){
-	this->persona.setDinero(this->persona.getDinero()+1);
+		personas[0]->setDinero(personas[0]->getDinero()+1);
 }
 
 string Solista::getTipo(){

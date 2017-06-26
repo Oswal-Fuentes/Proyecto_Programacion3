@@ -29,3 +29,7 @@ void Playlist::addCancion(Cancion* cancion){
 void Playlist::setId(string id){
 	this->id=id;
 }
+
+string Playlist::getId(){
+	return id;
+}

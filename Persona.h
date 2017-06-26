@@ -17,8 +17,8 @@ public:
 	int getDinero();
 	void setDinero(int);
 
-	string getid();
-	void setid(string);
+	string getId();
+	void setId(string);
 
 	void agregarDinero(int);
 

@@ -13,6 +13,7 @@ class Artista{
 protected:
 	string nombre;
 	vector<Album*>albumes;
+	vector<Persona*>personas;
 public:
 	Artista(string);
 	Artista();
@@ -23,8 +24,11 @@ public:
 	void setNombre(string);
 	string getNombre();
 
-	void addAlbum(Album*);
+	vector<Persona*> getPersonas();
 
+	void addAlbum(Album*);
+	void addPersona(Persona*);
+	
 	virtual string getTipo();
 
 	friend ostream& operator<<(ostream& salida,Artista& artista){
@@ -33,9 +37,15 @@ public:
 			textoalbumes+=artista.getAlbumes()[i]->getId()+'\n';
 		}
 		textoalbumes+="end";
+		string textopersonas="";
+		for (int i = 0; i < artista.getPersonas().size(); ++i){
+			textopersonas+=artista.getPersonas()[i]->getId()+'\n';
+		}
+		textopersonas+="end";
 		return salida<<
 		artista.nombre<<endl<<
-		textoalbumes<<endl;
+		textoalbumes<<endl<<
+		textopersonas<<endl;
 	}
 
 	virtual void Pagar();

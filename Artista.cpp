@@ -34,3 +34,11 @@ void Artista::addAlbum(Album* album){
 string Artista::getTipo(){
 	return "sinTipo";
 }
+
+vector<Persona*> Artista::getPersonas(){
+	return personas;
+}
+
+void Artista::addPersona(Persona* persona){
+	personas.push_back(persona);
+}
