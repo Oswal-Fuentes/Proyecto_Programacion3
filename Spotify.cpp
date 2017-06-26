@@ -286,7 +286,7 @@ void Spotify::run(){
 				//Si se quiere salir del programa por completo
 				if (rUsuario.compare("salir")==0||rPassword.compare("salir")==0){
 					opc=1;
-				}else if(rUsuario.compare("cargar")||rPassword.compare("cargar")){
+				}else if(rUsuario.compare("cargar")==0||rPassword.compare("cargar")==0){
 					string ruta;
 					ruta="./canciones.txt";
 					recuperarCanciones(ruta,canciones);
