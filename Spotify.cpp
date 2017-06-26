@@ -286,7 +286,7 @@ void Spotify::run(){
 				//Si se quiere salir del programa por completo
 				if (rUsuario.compare("salir")==0||rPassword.compare("salir")==0){
 					opc=1;
-				}else if(rUsuario.compare("cargar")||rPassword.compare("cargar")){
+				}else if(rUsuario.compare("cargar")==0||rPassword.compare("cargar")==0){
 					string ruta;
 					ruta="./canciones.txt";
 					recuperarCanciones(ruta,canciones);
@@ -298,6 +298,9 @@ void Spotify::run(){
 					recuperarAlbumes(ruta,albumes, canciones);
 					ruta="./artistas.txt";
 					recuperarArtistas(ruta, artistas, albumes, personas);
+					clear();
+					mvprintw(10,5,"Se cargaron archivos, presione una tecla para continuar.");
+					getch();
 					/*void recuperarCuentas(string &,vector<Cuenta*> &,
 						vector<Cancion*>&,vector<Playlist*>&,vector<Persona*>&);*/
 				}else{//Si no existen los datos que ingresó
