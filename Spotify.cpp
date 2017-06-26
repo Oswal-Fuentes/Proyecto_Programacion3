@@ -96,9 +96,10 @@ void Spotify::run(){
 		guardar las respuestas en un arreglo de char.*/
 		
 		initscr();//Se inicia la pantalla de ncurses
-		mvprintw(2,5,"¡Bienvenido a Spotify!");
-		mvprintw(3,5,"Ingrese sus datos,");
-		mvprintw(4,5,"o (salir) en Usuario o Contraseña para cerrar el programa.");
+		mvprintw(1,5,"¡Bienvenido a Spotify!");
+		mvprintw(2,5,"Ingrese sus datos,");
+		mvprintw(3,5,"(salir) en Usuario o Contraseña para cerrar el programa.");
+		mvprintw(4,5,"(cargar) en Usuario o Contraseña para cargar archivos en el programa.");
 
 		//se lee el usuario
 		mvprintw(5,5,"Ingrese usuario: ");
