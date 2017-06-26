@@ -10,22 +10,45 @@ void Spotify::run(){
 	vector<Cancion*> canciones;
 	vector<Cuenta*> cuentas;
 	Cuenta* usuarioActual;
-	for (int i = 0; i < 5; ++i)
-	{
-		Region* region = new Socialista("Honduras",12);
-		//canciones.push_back(new Radio("Wicked Game",4,0,0,region,"Juan"));
-	}
+	//Canciones
+	canciones.push_back(new Explicit("1","Toxicity","System Of A Down",3,0,0));
+	canciones.push_back(new Radio("2","B.Y.O.B","System Of A Down",4,0,0));
+	canciones.push_back(new Cover("3","A Tout Le Monde","Megadeth",4,0,0));
+	canciones.push_back(new Explicit("4","Hangar 18","Megadeth",3,0,0));
+	canciones.push_back(new Radio("5","Stairway To Heaven","Led Zeppelin",5,0,0));
+	canciones.push_back(new Cover("6","Immigrant Song","Led Zeppelin",4,0,0));
+	//Cuentas
 	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Alessandro","ale","123",&cuentas));
 	vector<Artista*> artistas;
-	artistas.push_back(new Artista("Oasis"));
-	Artista* pArtista=artistas[0];
+	//Artistas
+	artistas.push_back(new Artista("System Of A Down"));
+	artistas.push_back(new Artista("Megadeth"));
+	artistas.push_back(new Artista("Led Zeppelin"));
+	Artista* pArtista1=artistas[0];
+	Artista* pArtista2=artistas[1];
+	Artista* pArtista3=artistas[2];
+	//Albums
 	vector<Album*> albumes;
-	albumes.push_back(new Album("Live"));
+	albumes.push_back(new Album("Toxicity"));
+	albumes.push_back(new Album("Mezmerize"));
+	albumes.push_back(new Album("Youthanasia"));
+	albumes.push_back(new Album("Rust In Peace"));
+	albumes.push_back(new Album("Led Zeppelin IV"));
+	albumes.push_back(new Album("Led Zeppelin III"));
 	albumes[0]->setCanciones(canciones);
-	pArtista->setAlbumes(albumes);
-
+	albumes[1]->setCanciones(canciones);
+	albumes[2]->setCanciones(canciones);
+	albumes[3]->setCanciones(canciones);
+	albumes[4]->setCanciones(canciones);
+	albumes[5]->setCanciones(canciones);
+	pArtista1->setAlbumes(albumes);
+	pArtista1->setAlbumes(albumes);
+	pArtista2->setAlbumes(albumes);
+	pArtista2->setAlbumes(albumes);
+	pArtista3->setAlbumes(albumes);
+	pArtista3->setAlbumes(albumes);
 	int opc=0;
 	do{
 		char respuesta[1000];
@@ -147,7 +170,7 @@ void Spotify::run(){
 					mvprintw(10,5,"Ingrese la opción que desea: ");
 					getstr(respuesta);
 				}
-				if (respuestaGlobal.compare("6")){//Tendencias
+				if (respuestaGlobal.compare("6")==0){//Tendencias
 					clear();
 					vector<Cancion*>global_temp;
 					vector<Cancion*>socialista_temp;
@@ -155,11 +178,10 @@ void Spotify::run(){
 					mvprintw(6,5,"1. Global");
 					mvprintw(7,5,"2. Socialista");
 					mvprintw(8,5,"3. Democratica");
-					mvprintw(9,5,"4. Salir");
-					mvprintw(10,5,"Ingrese la opción que desea: ");
+					mvprintw(9,5,"Ingrese la opción que desea: ");
 					getstr(respuesta);
 					string temp_resp=respuesta;
-					if(temp_resp=="1"){
+					if(temp_resp.compare("1")==0){
 						for(int i=100000;i>=0;i--){
 							for(int j=0;j<canciones.size();j++){
 								if(canciones[j]->getReproducciones()==i){
@@ -177,7 +199,7 @@ void Spotify::run(){
 						int pos=atoi(respuesta);
 						canciones[pos]->Reproducir();
 					}
-					if(temp_resp=="2"){
+					if(temp_resp.compare("2")==0){
 						for(int i=100000;i>=0;i--){
 							for(int j=0;j<canciones.size();j++){
 								if(canciones[j]->getReproducciones()==i){
@@ -197,7 +219,7 @@ void Spotify::run(){
 						int pos=atoi(respuesta);
 						canciones[pos]->Reproducir();
 					}
-					if(temp_resp=="3"){
+					if(temp_resp.compare("3")==0){
 						for(int i=100000;i>=0;i--){
 							for(int j=0;j<canciones.size();j++){
 								if(canciones[j]->getReproducciones()==i){
@@ -214,9 +236,6 @@ void Spotify::run(){
 						getstr(respuesta);
 						int pos=atoi(respuesta);
 						canciones[pos]->Reproducir();
-					}
-					if(temp_resp=="4"){
-
 					}
 				}
 				if (respuestaGlobal.compare("7")){
