@@ -13,7 +13,7 @@ void Spotify::run(){
 	for (int i = 0; i < 5; ++i)
 	{
 		Region* region = new Socialista("Honduras",12);
-		canciones.push_back(new Radio("Wicked Game",4,0,0,region,"Juan"));
+		//canciones.push_back(new Radio("Wicked Game",4,0,0,region,"Juan"));
 	}
 	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",&cuentas));
 	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",&cuentas));
@@ -147,8 +147,53 @@ void Spotify::run(){
 					mvprintw(10,5,"Ingrese la opción que desea: ");
 					getstr(respuesta);
 				}
-				if (respuestaGlobal.compare("6")){
+				if (respuestaGlobal.compare("6")){//Tendencias
 					clear();
+					vector<Cancion*>global_temp;
+					vector<Cancion*>socialista_temp;
+					mvprintw(5,5,"Escoja al region: ");
+					mvprintw(6,5,"1. Global");
+					mvprintw(7,5,"2. Socialista");
+					mvprintw(8,5,"3. Democratica");
+					mvprintw(9,5,"4. Salir");
+					mvprintw(10,5,"Ingrese la opción que desea: ");
+					getstr(respuesta);
+					string temp_resp=respuesta;
+					if(temp_resp=="1"){
+						for(int i=100000;i>=0;i--){
+							for(int j=0;j<canciones.size();j++){
+								if(canciones[j]->getReproducciones()==i){
+									global_temp.push_back(canciones[i]);
+								}
+							}
+						}
+						//----
+					}
+					if(temp_resp=="2"){
+						for(int i=100000;i>=0;i--){
+							for(int j=0;j<canciones.size();j++){
+								if(canciones[j]->getReproducciones()==i){
+									if(canciones[j]->getTipo()!="Explicit"){
+										socialista_temp.push_back(canciones[i]);
+									}
+								}
+							}
+						}
+						//----
+					}
+					if(temp_resp=="3"){
+						for(int i=100000;i>=0;i--){
+							for(int j=0;j<canciones.size();j++){
+								if(canciones[j]->getReproducciones()==i){
+									global_temp.push_back(canciones[i]);
+								}
+							}
+						}
+						//------
+					}
+					if(temp_resp=="4"){
+
+					}
 				}
 				if (respuestaGlobal.compare("7")){
 					clear();
@@ -166,15 +211,15 @@ void Spotify::run(){
 		} while (respuestaGlobal.compare("7")!=0);
 		clear();
 	endwin();//Se finaliza la ventana de ncurses
-	} while (opc==0);
+} while (opc==0);
 	//Liberación de memoria
-	for (int i = 0; i < canciones.size(); ++i){
-		delete canciones[i];
-	}
-	for (int i = 0; i < cuentas.size(); ++i){
-		delete cuentas[i];
-	}
-	for (int i = 0; i < artistas.size(); ++i){
-		delete artistas[i];
-	}
+for (int i = 0; i < canciones.size(); ++i){
+	delete canciones[i];
+}
+for (int i = 0; i < cuentas.size(); ++i){
+	delete cuentas[i];
+}
+for (int i = 0; i < artistas.size(); ++i){
+	delete artistas[i];
+}
 }

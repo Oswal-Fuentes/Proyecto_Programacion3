@@ -23,18 +23,14 @@ string Artista::getNombre(){
 	return nombre;
 }
 
-void Artista::setPersona(Persona persona){
-	this->persona=persona;
-}
-
-Persona Artista::getPersona(){
-	return persona;
-}
-
 void Artista::Pagar(){
 	
 }
 
 void Artista::addAlbum(Album* album){
 	albumes.push_back(album);
+}
+
+string Artista::getTipo(){
+	return "sinTipo";
 }

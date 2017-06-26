@@ -40,7 +40,7 @@ void operator>>(string&,vector<Cancion*>&);
 void operator>>(string&,vector<Persona*>&);
 void recuperarPlaylists(string&,vector<Playlist*>&,vector<Cancion*>&);
 void recuperarAlbumes(string&,vector<Album*>&,vector<Cancion*>&);
-void recuperarArtistas(string&,vector<Album*>&,vector<Cancion*>&);
+void recuperarArtistas(string&,vector<Artista*>&,vector<Album*>&);
 
 int main(int argc, char const *argv[]){
 	ofstream archivo;
@@ -251,7 +251,7 @@ int main(int argc, char const *argv[]){
 	artistas.clear();
 		//Se lee en un vector todas las artistas
 	cout<<"VECTOR RECONSTRUIDO"<<endl;
-	recuperarArtistas(ruta,artistas,canciones);
+	recuperarArtistas(ruta,artistas,albumes);
 	for (int i = 0; i < artistas.size(); ++i){
 		cout<<*artistas[i];
 	}
@@ -371,14 +371,14 @@ void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canc
 		getline(entrada,nombre);
 		albumes.push_back(new Album(nombre));
 		//Se obtiene el album
-		Album* ptrPlaylist=albumes[albumes.size()-1];
-		ptrPlaylist->setId(id);
+		Album* ptrAlbum=albumes[albumes.size()-1];
+		ptrAlbum->setId(id);
 		string cancion;
 		getline(entrada,cancion);
 		while(cancion.compare("end")!=0){
 			for (int i = 0; i < canciones.size(); ++i){
 				if (canciones[i]->getId().compare(cancion)==0){
-					ptrPlaylist->addCancion(canciones[i]);
+					ptrAlbum->addCancion(canciones[i]);
 				}
 			}
 			getline(entrada,cancion);
@@ -395,30 +395,27 @@ void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canc
 	entrada.close();
 }
 
-void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Cancion*>&canciones){
+void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Album*>&albumes){
 	ifstream entrada;
 	entrada.open(ruta,ios::in);
 	bool final=false;
 	while (!entrada.eof()){
 		//Se leen los atributos
-		string id;
-		getline(entrada,id);
 		string nombre;
 		getline(entrada,nombre);
-		artistas.push_back(new Album(nombre));
+		artistas.push_back(new Artista(nombre));
 		//Se obtiene el artista
-		Album* ptrPlaylist=artistas[artistas.size()-1];
-		ptrPlaylist->setId(id);
-		string cancion;
-		getline(entrada,cancion);
-		while(cancion.compare("end")!=0){
-			for (int i = 0; i < canciones.size(); ++i){
-				if (canciones[i]->getId().compare(cancion)==0){
-					ptrPlaylist->addCancion(canciones[i]);
+		Artista* ptrArtista=artistas[artistas.size()-1];
+		string album;
+		getline(entrada,album);
+		while(album.compare("end")!=0){
+			for (int i = 0; i < albumes.size(); ++i){
+				if (albumes[i]->getId().compare(album)==0){
+					ptrArtista->addAlbum(albumes[i]);
 				}
 			}
-			getline(entrada,cancion);
-			if(cancion.compare("")==0){
+			getline(entrada,album);
+			if(album.compare("")==0){
 				final=true;
 				break;
 			}
