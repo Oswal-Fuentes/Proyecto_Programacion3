@@ -89,7 +89,7 @@ void Cuenta_normal::reproducir(vector<Cancion*> cancionesActuales){
 		int pos=rand()%cancionesActuales.size();
 		Cancion* cancion;
 		cancion=cancionesActuales[pos];
-		cancion->Reproducir();
+		cancion++;
 		historial.push_back(cancion);
 		clear();
 		mvprintw(5,5,"La cancion se está reproduciendo actualmente,");

@@ -52,5 +52,9 @@ public:
                 cancion.favorito<<endl;
     }
 
+    friend void operator++(Cancion& cancion){
+        cancion.Reproducir();
+    }
+
 };
 #endif
