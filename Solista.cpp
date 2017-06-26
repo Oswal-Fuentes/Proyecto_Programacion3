@@ -11,3 +11,6 @@ void Solista::Pagar(){
 	this->persona.setDinero(this->persona.getDinero()+1);
 }
 
+string Solista::getTipo(){
+	return "Solista";
+}

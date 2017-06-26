@@ -16,5 +16,7 @@ public:
 	Solista();
 
 	void Pagar();
+
+	string getTipo();
 };
 #endif

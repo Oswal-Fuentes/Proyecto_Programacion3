@@ -3,24 +3,24 @@
 Artista::Artista(){
 }
 
-Artista::Artista(string Nombre){
-	this->Nombre=Nombre;
+Artista::Artista(string nombre){
+	this->nombre=nombre;
 }
 
 vector<Album*> Artista::getAlbumes() {
-	return Albumes;
+	return albumes;
 }
 
-void Artista::setAlbumes(vector<Album*>Albumes) {
-	this->Albumes = Albumes;
+void Artista::setAlbumes(vector<Album*>albumes) {
+	this->albumes = albumes;
 }
 
-void Artista::setNombre(string Nombre){
-	this->Nombre=Nombre;
+void Artista::setNombre(string nombre){
+	this->nombre=nombre;
 }
 
 string Artista::getNombre(){
-	return Nombre;
+	return nombre;
 }
 
 void Artista::setPersona(Persona persona){
@@ -33,4 +33,8 @@ Persona Artista::getPersona(){
 
 void Artista::Pagar(){
 	
+}
+
+void Artista::addAlbum(Album* album){
+	albumes.push_back(album);
 }

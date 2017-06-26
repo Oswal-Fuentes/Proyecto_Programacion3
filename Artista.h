@@ -11,9 +11,8 @@ using namespace std;
 
 class Artista{
 protected:
-	string Nombre;
-	Persona persona;
-	vector<Album*>Albumes;
+	string nombre;
+	vector<Album*>albumes;
 public:
 	Artista(string);
 	Artista();
@@ -24,8 +23,20 @@ public:
 	void setNombre(string);
 	string getNombre();
 
-	void setPersona(Persona);
-	Persona getPersona();
+	void addAlbum(Album*);
+
+	virtual string getTipo();
+
+	friend ostream& operator<<(ostream& salida,Artista& artista){
+		string textoalbumes="";
+		for (int i = 0; i < artista.getAlbumes().size(); ++i){
+			textoalbumes+=artista.getAlbumes()[i]->getId()+'\n';
+		}
+		textoalbumes+="end";
+		return salida<<
+		artista.nombre<<endl<<
+		textoalbumes<<endl;
+	}
 
 	virtual void Pagar();
 };

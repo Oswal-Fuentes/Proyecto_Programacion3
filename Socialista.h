@@ -16,5 +16,6 @@ public:
 
 	double descuento(double);
 	bool bloquearCancion(int);
+
 };
 #endif

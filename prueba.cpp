@@ -39,6 +39,8 @@ using namespace std;
 void operator>>(string&,vector<Cancion*>&);
 void operator>>(string&,vector<Persona*>&);
 void recuperarPlaylists(string&,vector<Playlist*>&,vector<Cancion*>&);
+void recuperarAlbumes(string&,vector<Album*>&,vector<Cancion*>&);
+void recuperarArtistas(string&,vector<Album*>&,vector<Cancion*>&);
 
 int main(int argc, char const *argv[]){
 	ofstream archivo;
@@ -159,6 +161,105 @@ int main(int argc, char const *argv[]){
 	for (int i = 0; i < playlists[0]->getCanciones().size(); ++i){
 		cout<<*(playlists[0]->getCanciones()[i]);
 	}
+
+
+	//Prueba de albumes
+	cout<<"----------------------------"<<endl;
+	cout<<"PRUEBA DE ALBUMES"<<endl;
+	cout<<"----------------------------"<<endl;
+	vector<Album*> albumes;
+	albumes.push_back(new Album("Morning Glory"));
+	albumes.push_back(new Album("Recopilatorio"));
+	
+	albumes[0]->setId("1");
+	albumes[1]->setId("2");
+
+	albumes[0]->addCancion(canciones[0]);
+	albumes[0]->addCancion(canciones[0]);
+	albumes[0]->addCancion(canciones[1]);
+	
+	albumes[1]->addCancion(canciones[1]);
+	albumes[1]->addCancion(canciones[0]);
+	albumes[1]->addCancion(canciones[1]);
+
+	cout<<"VECTOR CREADO"<<endl;
+	for (int i = 0; i < albumes.size(); ++i){
+		cout<<*albumes[i];
+	}
+		//Se guardan las albumes en el archivo	
+	ruta="./albumes.txt";
+	archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+	if (archivo.fail()){
+		cout<<"No se puede abrir el archivo"<<endl;
+	}
+
+	for (int i = 0; i < albumes.size(); ++i){
+		archivo<<*albumes[i];
+	}
+	//archivo<<"endOfFile";
+	archivo.flush();
+	archivo.close();
+	albumes.clear();
+		//Se lee en un vector todas las albumes
+	cout<<"VECTOR RECONSTRUIDO"<<endl;
+	recuperarAlbumes(ruta,albumes,canciones);
+	for (int i = 0; i < albumes.size(); ++i){
+		cout<<*albumes[i];
+	}
+	cout<<"Canciones de albumes[0]"<<endl;
+	for (int i = 0; i < albumes[0]->getCanciones().size(); ++i){
+		cout<<*(albumes[0]->getCanciones()[i]);
+	}
+
+	//Prueba de artistas
+	cout<<"----------------------------"<<endl;
+	cout<<"PRUEBA DE ARTISTAS"<<endl;
+	cout<<"----------------------------"<<endl;
+	vector<Artista*> artistas;
+	artistas.push_back(new Artista("Oasis"));
+	artistas.push_back(new Artista("Megadeth"));
+
+	artistas[0]->addAlbum(albumes[0]);
+	artistas[0]->addAlbum(albumes[0]);
+	artistas[0]->addAlbum(albumes[1]);
+	
+	artistas[1]->addAlbum(albumes[1]);
+	artistas[1]->addAlbum(albumes[0]);
+	artistas[1]->addAlbum(albumes[1]);
+
+	cout<<"VECTOR CREADO"<<endl;
+	for (int i = 0; i < artistas.size(); ++i){
+		cout<<*artistas[i];
+	}
+		//Se guardan las artistas en el archivo	
+	ruta="./artistas.txt";
+	archivo.open(ruta.c_str(),ios::out);
+
+		//Si el archivo falla
+	if (archivo.fail()){
+		cout<<"No se puede abrir el archivo"<<endl;
+	}
+
+	for (int i = 0; i < artistas.size(); ++i){
+		archivo<<*artistas[i];
+	}
+	//archivo<<"endOfFile";
+	archivo.flush();
+	archivo.close();
+	artistas.clear();
+		//Se lee en un vector todas las artistas
+	cout<<"VECTOR RECONSTRUIDO"<<endl;
+	recuperarArtistas(ruta,artistas,canciones);
+	for (int i = 0; i < artistas.size(); ++i){
+		cout<<*artistas[i];
+	}
+	cout<<"Canciones de artistas[0]"<<endl;
+	for (int i = 0; i < artistas[0]->getAlbumes().size(); ++i){
+		cout<<*(artistas[0]->getAlbumes()[i]);
+	}
+
 	return 0;
 }
 
@@ -254,5 +355,78 @@ void recuperarPlaylists(string &ruta,vector<Playlist*> &playlists,vector<Cancion
 		}
 	}
 	playlists.pop_back();
+	entrada.close();
+}
+
+
+void recuperarAlbumes(string &ruta,vector<Album*> &albumes,vector<Cancion*>&canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	bool final=false;
+	while (!entrada.eof()){
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string nombre;
+		getline(entrada,nombre);
+		albumes.push_back(new Album(nombre));
+		//Se obtiene el album
+		Album* ptrPlaylist=albumes[albumes.size()-1];
+		ptrPlaylist->setId(id);
+		string cancion;
+		getline(entrada,cancion);
+		while(cancion.compare("end")!=0){
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(cancion)==0){
+					ptrPlaylist->addCancion(canciones[i]);
+				}
+			}
+			getline(entrada,cancion);
+			if(cancion.compare("")==0){
+				final=true;
+				break;
+			}
+		}
+		if (final==true){
+			break;
+		}
+	}
+	albumes.pop_back();
+	entrada.close();
+}
+
+void recuperarArtistas(string &ruta,vector<Artista*> &artistas,vector<Cancion*>&canciones){
+	ifstream entrada;
+	entrada.open(ruta,ios::in);
+	bool final=false;
+	while (!entrada.eof()){
+		//Se leen los atributos
+		string id;
+		getline(entrada,id);
+		string nombre;
+		getline(entrada,nombre);
+		artistas.push_back(new Album(nombre));
+		//Se obtiene el artista
+		Album* ptrPlaylist=artistas[artistas.size()-1];
+		ptrPlaylist->setId(id);
+		string cancion;
+		getline(entrada,cancion);
+		while(cancion.compare("end")!=0){
+			for (int i = 0; i < canciones.size(); ++i){
+				if (canciones[i]->getId().compare(cancion)==0){
+					ptrPlaylist->addCancion(canciones[i]);
+				}
+			}
+			getline(entrada,cancion);
+			if(cancion.compare("")==0){
+				final=true;
+				break;
+			}
+		}
+		if (final==true){
+			break;
+		}
+	}
+	artistas.pop_back();
 	entrada.close();
 }

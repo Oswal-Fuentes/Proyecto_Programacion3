@@ -16,3 +16,7 @@ void Banda::Pagar(){
 		this->integrantes[i]->setDinero(this->integrantes[i]->getDinero()+1);
 	}
 }
+
+string Banda::getTipo(){
+	return "Banda";
+}
