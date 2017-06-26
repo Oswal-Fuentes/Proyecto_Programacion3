@@ -283,8 +283,10 @@ int main(int argc, char const *argv[]){
 	cout<<"PRUEBA DE CUENTAS"<<endl;
 	cout<<"----------------------------"<<endl;
 	vector<Cuenta*> cuentas;
-	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",cuentas));
-	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",cuentas));
+	vector<Cuenta*>* ptrCuentas;
+	*ptrCuentas=cuentas;
+	cuentas.push_back(new Cuenta_premium("Jorge","jor","123",ptrCuentas));
+	cuentas.push_back(new Cuenta_normal("Oswal","osw","123",ptrCuentas));
 
 	cuentas[0]->addFavorito(canciones[0]);
 	cuentas[0]->addHistorial(canciones[0]);
@@ -298,9 +300,9 @@ int main(int argc, char const *argv[]){
 	cuentas[0]->addHistorial(canciones[0]);
 	cuentas[0]->addPlaylist(playlists[1]);
 	
-	cuentas[1]->addPersona(canciones[1]);
-	cuentas[1]->addPersona(canciones[0]);
-	cuentas[1]->addPersona(playlists[1]);
+	cuentas[1]->addFavorito(canciones[1]);
+	cuentas[1]->addHistorial(canciones[0]);
+	cuentas[1]->addPlaylist(playlists[1]);
 
 	cout<<"VECTOR CREADO"<<endl;
 	for (int i = 0; i < cuentas.size(); ++i){
@@ -324,7 +326,7 @@ int main(int argc, char const *argv[]){
 	cuentas.clear();
 		//Se lee en un vector todas las cuentas
 	cout<<"VECTOR RECONSTRUIDO"<<endl;
-	recuperarArtistas(ruta,cuentas,canciones,playlists,personas);
+	recuperarCuentas(ruta,cuentas,canciones,playlists,personas);
 
 	for (int i = 0; i < cuentas.size(); ++i){
 		cout<<*cuentas[i];

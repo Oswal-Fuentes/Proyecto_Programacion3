@@ -246,4 +246,8 @@ for (int i = 0; i < cuentas.size(); ++i){
 for (int i = 0; i < artistas.size(); ++i){
 	delete artistas[i];
 }
+for (int i = 0; i < albumes.size(); ++i){
+	delete albumes[i];
+}
+delete usuarioActual;
 }
